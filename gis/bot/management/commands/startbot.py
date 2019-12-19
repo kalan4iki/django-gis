@@ -38,11 +38,11 @@ def send_anytext(message):
         try:
 	        b = KNDhistor.objects.filter(date='tinow')
             #if config.debug == True: logging.debug(str(b))
-            if len(b) != 0:
-                a = b[0]
-                text = 'На текущий момент проведен осмотр ' + str(a.complete) + ' дворов из ' + str(a.maxdvor) + '. А именно ' + str(a.proc) + '%.'
-            else:
-                text = 'На текущую дату ещё нет информации.'
+            #if len(b) != 0:
+            a = b[0]
+            text = 'На текущий момент проведен осмотр ' + str(a.complete) + ' дворов из ' + str(a.maxdvor) + '. А именно ' + str(a.proc) + '%.'
+            #else:
+                #text = 'На текущую дату ещё нет информации.'
             logging.info('BOT ' + times + " successfully")
             bot.send_message(message.chat.id, text)
         except:
@@ -60,11 +60,11 @@ def send_anytext(message):
         try:
             b = DIPhistor.objects.filter(date='tinow')
             #if config.debug == True: logging.debug(str(b))
-            if len(b) != 0:
-                a = b[0]
-                text = 'На текущий момент проведен осмотр ' + str(a.complete) + ' ДИП из ' + str(a.maxdvor) + '. А именно ' + str(a.proc) + '%.'
-            else:
-                text = 'На текущую дату ещё нет информации.'
+            #if len(b) != 0:
+            a = b[0]
+            text = 'На текущий момент проведен осмотр ' + str(a.complete) + ' ДИП из ' + str(a.maxdvor) + '. А именно ' + str(a.proc) + '%.'
+            #else:
+            #    text = 'На текущую дату ещё нет информации.'
             logging.info('BOT ' + times + " successfully")
             bot.send_message(message.chat.id, text)
         except:
