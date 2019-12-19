@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from bot.models import KNDhistor, DIPhistor, Usersbot
 from gis.settings import token, konfmain, DEBUG
-from bot.plot import plot
+#from bot.plot import plot
 import telebot
 import logging
 import traceback
