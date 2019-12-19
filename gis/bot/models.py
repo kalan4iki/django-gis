@@ -14,7 +14,7 @@ class KNDhistor(models.Model): #Отчеты по территориям
                             verbose_name = 'Выполнено дворов')
     proc = models.IntegerField(help_text='Процент выполнения.',
                             verbose_name = 'Процент выполнения')
-    times = models.CharField(max_length=20, help_text='Время отчета.',
+    times = models.DateTimeField(auto_now= True, help_text='Время отчета.',
                             verbose_name = 'Время проверки')
 
     class Meta:
@@ -37,7 +37,7 @@ class DIPhistor(models.Model): #Отчеты по ДИП
                             verbose_name = 'Выполнено ДИП')
     proc = models.IntegerField(help_text='Процент ДИП.',
                             verbose_name = 'Процент ДИП')
-    times = models.CharField(max_length=20, help_text='Время отчета.',
+    times = models.DateTimeField(auto_now= True, help_text='Время отчета.',
                             verbose_name = 'Время')
 
     class Meta:

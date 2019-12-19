@@ -25,7 +25,10 @@ SECRET_KEY = 's8kzrle3=876!i38ltlz@eujb(9d6d$fp*h25y@itp=q))in9-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'huffed.ru',
+    '188.120.232.93',
+]
 
 
 # Application definition
