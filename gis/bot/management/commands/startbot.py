@@ -40,7 +40,7 @@ def send_anytext(message):
             #if config.debug == True: logging.debug(str(b))
             if len(b) != 0:
                 a = b[0]
-                text = 'На текущий момент проведен осмотр ' + str(a.complete) + ' дворов из ' + str(a.maxdvor) + '. А именно ' + str(a.proc) + '%.'
+                text = f'На {a.times.hour}:{a.times.minute} {a.times.day}.{a.times.month}.{a.times.year} проведен осмотр {a.complete} дворов из {a.maxdvor}. А именно {a.proc}%.'
             else:
                 text = 'На текущую дату ещё нет информации.'
             logging.info('BOT ' + times + " successfully")
@@ -62,7 +62,7 @@ def send_anytext(message):
             #if config.debug == True: logging.debug(str(b))
             if len(b) != 0:
                 a = b[0]
-                text = 'На текущий момент проведен осмотр ' + str(a.complete) + ' ДИП из ' + str(a.maxdvor) + '. А именно ' + str(a.proc) + '%.'
+                text =  f'На {a.times.hour}:{a.times.minute} {a.times.day}.{a.times.month}.{a.times.year} проведен осмотр {a.complete} ДИП из {a.maxdvor}. А именно {a.proc}%.'
             else:
                 text = 'На текущую дату ещё нет информации.'
             logging.info('BOT ' + times + " successfully")
