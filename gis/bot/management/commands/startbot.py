@@ -37,7 +37,7 @@ def send_anytext(message):
     elif message.text == '✉️ Дворы.' or message.text == '/otch':
         try:
 	        #b = readdb('knd', {'date': tinow})
-            if debug == True: logging.debug(str(b))
+            if DEBUG == True: logging.debug(str(b))
             if len(b) != 0:
                 #a = b[0]
                 text = 'На текущий момент проведен осмотр ' + str(a[2]) + ' дворов из ' + str(a[1]) + '. А именно ' + str(a[3]) + '%.'
@@ -59,7 +59,7 @@ def send_anytext(message):
     elif message.text == '✉️ ДИП.':
         try:
             b = readdb('dip', {'date': tinow})
-            if debug == True: logging.debug(str(b))
+            if DEBUG == True: logging.debug(str(b))
             if len(b) != 0:
                 a = b[0]
                 text = 'На текущий момент проведен осмотр ' + str(a[2]) + ' ДИП из ' + str(a[1]) + '. А именно ' + str(a[3]) + '%.'
