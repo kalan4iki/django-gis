@@ -38,11 +38,11 @@ def send_anytext(message):
         bot.send_message(message.chat.id, 'На главную.', reply_markup=keyboard('0'))
     elif message.text == '✉️ Дворы.' or message.text == '/otch':
         try:
-	        #b = readdb('knd', {'date': tinow})
+	        b = KNDhistor.objects.filter(date='tinow')
             if config.debug == True: logging.debug(str(b))
             if len(b) != 0:
-                #a = b[0]
-                text = 'На текущий момент проведен осмотр ' + str(a[2]) + ' дворов из ' + str(a[1]) + '. А именно ' + str(a[3]) + '%.'
+                a = b[0]
+                text = 'На текущий момент проведен осмотр ' + str(a.complete) + ' дворов из ' + str(a.maxdvor) + '. А именно ' + str(a.proc) + '%.'
             else:
                 text = 'На текущую дату ещё нет информации.'
             logging.info('BOT ' + times + " successfully")
@@ -60,11 +60,11 @@ def send_anytext(message):
             bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
     elif message.text == '✉️ ДИП.':
         try:
-            b = readdb('dip', {'date': tinow})
+            b = DIPhistor.objects.filter(date='tinow')
             if config.debug == True: logging.debug(str(b))
             if len(b) != 0:
                 a = b[0]
-                text = 'На текущий момент проведен осмотр ' + str(a[2]) + ' ДИП из ' + str(a[1]) + '. А именно ' + str(a[3]) + '%.'
+                text = 'На текущий момент проведен осмотр ' + str(a.complete) + ' ДИП из ' + str(a.maxdvor) + '. А именно ' + str(a.proc) + '%.'
             else:
                 text = 'На текущую дату ещё нет информации.'
             logging.info('BOT ' + times + " successfully")
