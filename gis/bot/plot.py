@@ -40,7 +40,7 @@ def plot(table):
             a = DIPhistor.objects.filter(date = i)
         if len(a) != 0:
             counts.append(int(a[0].complete))
-            proc.append(a[0].proc + '%')
+            proc.append(str(a[0].proc) + '%')
         else:
             counts.append(0)
             proc.append('0%')
