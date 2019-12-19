@@ -36,7 +36,7 @@ def send_anytext(message):
         bot.send_message(message.chat.id, 'На главную.', reply_markup=keyboard('0'))
     elif message.text == '✉️ Дворы.' or message.text == '/otch':
         try:
-	        b = KNDhistor.objects.filter(date='tinow')
+	        b = KNDhistor.objects.filter(date=tinow)
             #if config.debug == True: logging.debug(str(b))
             #if len(b) != 0:
             a = b[0]
@@ -58,7 +58,7 @@ def send_anytext(message):
             bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
     elif message.text == '✉️ ДИП.':
         try:
-            b = DIPhistor.objects.filter(date='tinow')
+            b = DIPhistor.objects.filter(date=tinow)
             #if config.debug == True: logging.debug(str(b))
             #if len(b) != 0:
             a = b[0]
