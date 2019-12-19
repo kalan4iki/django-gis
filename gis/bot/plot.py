@@ -36,7 +36,7 @@ def plot(table):
     for i in xdates:
         if table == 'knd':
             a = KNDhistor.objects.filter(data = i)
-        elif table == 'dip'
+        elif table == 'dip':
             a = DIPhistor.objects.filter(data = i)
         if len(a) != 0:
             counts.append(int(a[0].complete))
