@@ -37,7 +37,6 @@ def send_anytext(message):
     elif message.text == '✉️ Дворы.' or message.text == '/otch':
         try:
             b = KNDhistor.objects.filter(date=tinow)
-            print(b)
             #if config.debug == True: logging.debug(str(b))
             if len(b) != 0:
                 a = b[0]
@@ -60,7 +59,6 @@ def send_anytext(message):
     elif message.text == '✉️ ДИП.':
         try:
             b = DIPhistor.objects.filter(date=tinow)
-            print(b)
             #if config.debug == True: logging.debug(str(b))
             if len(b) != 0:
                 a = b[0]

@@ -135,6 +135,11 @@ STATIC_URL = '/static/'
 
 
 # Settings bots
-
+# Настройки бота
 token = '1064669767:AAE8lKfpq5OSOkRkxKXunws1diddZH-frAE' #Токен бота
 konfmain = '-246956834' #Рабочая конференция
+
+# Настройки для графиков
+
+maxdvor = 269 #Максимум дворов для графика
+maxdip = 330 #Максимум ДИП

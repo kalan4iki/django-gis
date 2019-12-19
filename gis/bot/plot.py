@@ -4,7 +4,9 @@
 from datetime import timedelta, datetime
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
-from config import maxdvor, db, debug, maxdip
+#from config import maxdvor, db, debug, maxdip
+from gis.settings import maxdvor, maxdip, DEBUG
+from models import KNDhistor, DIPhistor, Usersbot
 #from bd import readdb
 import matplotlib.pyplot as plt
 import numpy as np
@@ -28,17 +30,20 @@ def plot(table):
             xdates.append(str(temp.day) + "." + str(temp.month) + "." + str(temp.year))
     counts = []
     proc = []
-    if debug == True:
+    if DEBUG == True:
         print('xdates plt')
         print(xdates)
-    #for i in xdates:
-        #a = readdb(table, {'date': i})
-        #if len(a) != 0:
-        #    counts.append(int(a[0][2]))
-        #    proc.append(a[0][3] + '%')
-        #else:
-        #    counts.append(0)
-        #    proc.append('0%')
+    for i in xdates:
+        if table == 'knd':
+            a = KNDhistor.objects.filter(data = i)
+        elif table == 'dip'
+            a = DIPhistor.objects.filter(data = i)
+        if len(a) != 0:
+            counts.append(int(a[0].complete))
+            proc.append(a[0].proc + '%')
+        else:
+            counts.append(0)
+            proc.append('0%')
     fig, ax = plt.subplots(figsize=(8, 6))
     colors = []
     for i in range(0, 7):
@@ -46,7 +51,7 @@ def plot(table):
             colors.append('yellow')
         else:
             colors.append('grey')
-    if debug == True:
+    if DEBUG == True:
         print('counts plt')
         print(counts)
         print('x')
