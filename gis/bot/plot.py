@@ -6,7 +6,7 @@ from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
 #from config import maxdvor, db, debug, maxdip
 from gis.settings import maxdvor, maxdip, DEBUG
-from models import KNDhistor, DIPhistor, Usersbot
+from bot.models import KNDhistor, DIPhistor, Usersbot
 #from bd import readdb
 import matplotlib.pyplot as plt
 import numpy as np
