@@ -5,7 +5,7 @@ from datetime import timedelta, datetime
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
 #from config import maxdvor, db, debug, maxdip
-from gis.settings import maxdvor, maxdip, DEBUG
+from gis.settings import maxdvor, maxdip, DEBUG, path_plot
 from bot.models import KNDhistor, DIPhistor, Usersbot
 #from bd import readdb
 import matplotlib.pyplot as plt
@@ -89,7 +89,7 @@ def plot(table):
                         ha='center', va='bottom', rotation=90)
             i += 1
     autolabel(grap)
-    names = f'plt/{table}+{times}.png'
+    names = f'{path_plot}/{table}+{times}.png'
     #names = 'plt/' + times +'.png'
     plt.savefig(names, format='png', dpi=100)
     plt.clf()
