@@ -139,6 +139,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/staticroot/'
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+]
+
 # Settings bots
 # Настройки бота
 token = '1064669767:AAE8lKfpq5OSOkRkxKXunws1diddZH-frAE' #Токен бота
