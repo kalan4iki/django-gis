@@ -5,7 +5,7 @@ from datetime import timedelta, datetime
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
 #from config import maxdvor, db, debug, maxdip
-from gis.settings import maxdvor, maxdip, DEBUG, path_plot, maxmkd
+from gis.settings import max_plot, DEBUG, path_plot
 from bot.models import KNDhistor, DIPhistor, MKDhistor, Usersbot
 #from bd import readdb
 import matplotlib.pyplot as plt
@@ -61,24 +61,30 @@ def plot(table):
     grap = ax.bar(x, counts, color=colors)
     plt.xticks(x, xdates)
     ax.grid(which="major", linestyle="--", linewidth=0.5)
+    max = max_plot[table]
     if table == 'knd':
         ax.set_title("Динамика по осмотру дворов за 7 дней.", fontsize=16)
         ax.set_ylabel("Количество дворов", fontsize=14)
-        ax.axhline(maxdvor, ls='--', color='r')
-        ax.set_ylim(0, maxdvor + 80)
+        ax.axhline(max, ls='--', color='r')
+        ax.set_ylim(0, max + 80)
     elif table == 'dip':
         ax.set_title("Динамика по осмотру ДИП за 7 дней.", fontsize=16)
         ax.set_ylabel("Количество ДИП", fontsize=14)
-        ax.axhline(maxdip, ls='--', color='r')
-        ax.set_ylim(0, maxdip + 80)
+        ax.axhline(max, ls='--', color='r')
+        ax.set_ylim(0, max + 80)
     elif table == 'mkd':
         ax.set_title("Динамика по осмотру МКД за 7 дней.", fontsize=16)
         ax.set_ylabel("Количество МКД", fontsize=14)
-        ax.axhline(maxmkd, ls='--', color='r')
-        ax.set_ylim(0, maxmkd + 80)
+        ax.axhline(max, ls='--', color='r')
+        ax.set_ylim(0, max + 80)
     ax.set_xlabel("Дни", fontsize=14)
     ax.xaxis.set_minor_locator(AutoMinorLocator())
-    ax.yaxis.set_major_locator(MultipleLocator(25))
+    if max <= 500:
+        ax.yaxis.set_major_locator(MultipleLocator(25))
+    elif max > 500 and max <= 2000:
+        ax.yaxis.set_major_locator(MultipleLocator(50))
+    else max > 2000:
+        ax.yaxis.set_major_locator(MultipleLocator(100))
     ax.yaxis.set_minor_locator(MultipleLocator(5))
     ax.tick_params(which='major', length=10, width=2)
     def autolabel(rects):
