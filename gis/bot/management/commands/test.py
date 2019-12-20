@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from bot.models import KNDhistor, DIPhistor, Usersbot
+from bot.models import KNDhistor, DIPhistor, MKDhistor, Usersbot
 
 dvor = [('10.12.2019', '268', '265', '99'),
 ('11.12.2019', '269', '257', '96'),
@@ -25,6 +25,22 @@ dip = [('06.12.2019', '330', '168', '51'),
 ('16.12.2019', '330', '278', '84'),
 ('17.12.2019', '330', '288', '87')]
 
+mkd = [('05.12.2019', '1027', '71', '7'),
+('06.12.2019', '1027', '117', '11'),
+('07.12.2019', '1027', '56', '5'),
+('08.12.2019', '1027', '58', '6'),
+('09.12.2019', '1027', '65', '6'),
+('10.12.2019', '1027', '73', '7'),
+('11.12.2019', '1027', '120', '12'),
+('12.12.2019', '1027', '165', '16'),
+('13.12.2019', '1027', '127', '12'),
+('14.12.2019', '1027', '46', '5'),
+('15.12.2019', '1027', '46', '5'),
+('16.12.2019', '1027', '153', '15'),
+('17.12.2019', '1027', '297', '29'),
+('18.12.2019', '1027', '380', '37'),
+('19.12.2019', '1027', '349', '34')]
+
 class Command(BaseCommand):
     help = 'Команда запуска телеграм бота'
 
@@ -32,11 +48,7 @@ class Command(BaseCommand):
 #        parser.add_argument('poll_id', nargs='+', type=int)
 
     def handle(self, *args, **options):
-        b = KNDhistor.objects.filter(date='16.12.2019')
-        print(b[0].complete)
-'''
         for i in dip:
             temp = i[0].split('.')
-            a = DIPhistor(date=i[0], day=temp[0], month=temp[1], year=temp[2], maxdvor=i[1], complete=i[2], proc=i[3])
+            a = MKDhistor(date=i[0], day=temp[0], month=temp[1], year=temp[2], maxdvor=i[1], complete=i[2], proc=i[3])
             a.save()
-'''

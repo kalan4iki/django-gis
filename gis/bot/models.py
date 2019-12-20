@@ -48,6 +48,29 @@ class DIPhistor(models.Model): #Отчеты по ДИП
     def __str__(self):
         return self.date
 
+class MKDhistor(models.Model): #Отчеты по ДИП
+    date = models.CharField(max_length=20, help_text='Дата отчета.',
+                            verbose_name = 'Дата', primary_key = True)
+    day = models.IntegerField(help_text='День.', verbose_name = 'День')
+    month = models.IntegerField(help_text='Месяц.', verbose_name = 'Месяц')
+    year = models.IntegerField(help_text='Год.', verbose_name = 'Год')
+    maxdvor = models.IntegerField(help_text='Всего МКД.',
+                            verbose_name = 'Всего МКД')
+    complete = models.IntegerField(help_text='Выполнено МКД.',
+                            verbose_name = 'Выполнено МКД')
+    proc = models.IntegerField(help_text='Процент МКД.',
+                            verbose_name = 'Процент МКД')
+    times = models.DateTimeField(auto_now= True, help_text='Время отчета.',
+                            verbose_name = 'Время')
+
+    class Meta:
+        ordering = ['year', 'month', 'day']
+        verbose_name = 'отчет по осмотру МКД'
+        verbose_name_plural = 'отчеты по осмотру МКД'
+
+    def __str__(self):
+        return self.date
+
 class Usersbot(models.Model):
     username = models.CharField(max_length=20, help_text='username',
                             verbose_name = 'username')
@@ -72,3 +95,5 @@ class Usersbot(models.Model):
 
     def __str__(self):
         return self.username
+
+# Добавить МКД
