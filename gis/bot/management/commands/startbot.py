@@ -117,17 +117,21 @@ def send_anytext(message):
         bot.send_message(message.chat.id, text)
     elif message.text == 'Общий отчёт.':
         temp = [KNDhistor.objects.filter(date=tinow), DIPhistor.objects.filter(date=tinow), MKDhistor.objects.filter(date=tinow)]
-        temp2 = []
+        temp2 = [[], [], []]
         for i in temp:
             if len(i) != 0:
-                j = [str(i[0].maxdvor), str(i[0].complete), str(i[0].proc)]
+                j[0].append(str(i[0].maxdvor))
+                j[1].append(str(i[0].complete))
+                j[2].append(str(i[0].proc))
             else:
-                j = ['0', '0', '0']
+                j[0].append(str(0))
+                j[1].append(str(0))
+                j[2].append(str(0))
             temp2.append(j)
         print(temp2)
-        temp3 = pd.DataFrame({'Всего': [j[0][0], j[1][0], j[2][0]],
-                            'Выполнено': [j[0][1], j[1][1], j[2][1]],
-                            'Процентов': [j[0][2], j[1][2], j[2][2]]
+        temp3 = pd.DataFrame({'Всего': [j[0]],
+                            'Выполнено': [j[1]],
+                            'Процентов': [j[2]]
                             }, index = ['Дворы', 'ДИП', 'МКД'])
         bot.send_message(message.chat.id, temp3)
 
