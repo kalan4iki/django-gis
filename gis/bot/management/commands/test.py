@@ -48,7 +48,7 @@ class Command(BaseCommand):
 #        parser.add_argument('poll_id', nargs='+', type=int)
 
     def handle(self, *args, **options):
-        for i in dip:
+        for i in mkd:
             temp = i[0].split('.')
             a = MKDhistor(date=i[0], day=temp[0], month=temp[1], year=temp[2], maxdvor=i[1], complete=i[2], proc=i[3])
             a.save()
