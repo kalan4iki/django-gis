@@ -33,10 +33,10 @@ class DIPhistor(models.Model): #Отчеты по ДИП
     year = models.IntegerField(help_text='Год.', verbose_name = 'Год')
     maxdvor = models.IntegerField(help_text='Всего ДИП.',
                             verbose_name = 'Всего ДИП')
-    complete = models.IntegerField(help_text='Выполнено ДИП.',
-                            verbose_name = 'Выполнено ДИП')
-    proc = models.IntegerField(help_text='Процент ДИП.',
-                            verbose_name = 'Процент ДИП')
+    complete = models.IntegerField(help_text='Выполнено осмотров.',
+                            verbose_name = 'Выполнено осмотров')
+    proc = models.IntegerField(help_text='Процент выполнения.',
+                            verbose_name = 'Процент выполнения')
     times = models.DateTimeField(auto_now= True, help_text='Время отчета.',
                             verbose_name = 'Время')
 
@@ -56,10 +56,10 @@ class MKDhistor(models.Model): #Отчеты по ДИП
     year = models.IntegerField(help_text='Год.', verbose_name = 'Год')
     maxdvor = models.IntegerField(help_text='Всего МКД.',
                             verbose_name = 'Всего МКД')
-    complete = models.IntegerField(help_text='Выполнено МКД.',
-                            verbose_name = 'Выполнено МКД')
-    proc = models.IntegerField(help_text='Процент МКД.',
-                            verbose_name = 'Процент МКД')
+    complete = models.IntegerField(help_text='Выполнено осмотров.',
+                            verbose_name = 'Выполнено осмотров')
+    proc = models.IntegerField(help_text='Процент выполнения.',
+                            verbose_name = 'Процент выполнения')
     times = models.DateTimeField(auto_now= True, help_text='Время отчета.',
                             verbose_name = 'Время')
 
