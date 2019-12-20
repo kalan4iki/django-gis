@@ -5,8 +5,8 @@ from datetime import timedelta, datetime
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
 #from config import maxdvor, db, debug, maxdip
-from gis.settings import maxdvor, maxdip, DEBUG, path_plot
-from bot.models import KNDhistor, DIPhistor, Usersbot
+from gis.settings import maxdvor, maxdip, DEBUG, path_plot, maxmkd
+from bot.models import KNDhistor, DIPhistor, MKDhistor, Usersbot
 #from bd import readdb
 import matplotlib.pyplot as plt
 import numpy as np
@@ -38,6 +38,8 @@ def plot(table):
             a = KNDhistor.objects.filter(date = i)
         elif table == 'dip':
             a = DIPhistor.objects.filter(date = i)
+        elif table == 'mkd':
+            a = MKDhistor.objects.filter(date = i)
         if len(a) != 0:
             counts.append(int(a[0].complete))
             proc.append(str(a[0].proc) + '%')
@@ -69,6 +71,11 @@ def plot(table):
         ax.set_ylabel("Количество ДИП", fontsize=14)
         ax.axhline(maxdip, ls='--', color='r')
         ax.set_ylim(0, maxdip + 80)
+    elif table == 'mkd'
+        ax.set_title("Динамика по осмотру МКД за 7 дней.", fontsize=16)
+        ax.set_ylabel("Количество МКД", fontsize=14)
+        ax.axhline(maxmkd, ls='--', color='r')
+        ax.set_ylim(0, maxmkd + 80)
     ax.set_xlabel("Дни", fontsize=14)
     ax.xaxis.set_minor_locator(AutoMinorLocator())
     ax.yaxis.set_major_locator(MultipleLocator(25))

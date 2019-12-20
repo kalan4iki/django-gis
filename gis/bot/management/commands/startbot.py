@@ -40,7 +40,8 @@ def send_anytext(message):
             #if config.debug == True: logging.debug(str(b))
             if len(b) != 0:
                 a = b[0]
-                text = f'На {a.times.hour}:{a.times.minute} {a.times.day}.{a.times.month}.{a.times.year} проведен осмотр {a.complete} дворов из {a.maxdvor}. А именно {a.proc}%.'
+                text = f'На текущий момент проведен осмотр {a.complete} дворов из {a.maxdvor}. А именно {a.proc}%.'
+                #text = f'На {a.times.hour}:{a.times.minute} {a.times.day}.{a.times.month}.{a.times.year} проведен осмотр {a.complete} дворов из {a.maxdvor}. А именно {a.proc}%.'
             else:
                 text = 'На текущую дату ещё нет информации.'
             logging.info('BOT ' + times + " successfully")
@@ -62,7 +63,8 @@ def send_anytext(message):
             #if config.debug == True: logging.debug(str(b))
             if len(b) != 0:
                 a = b[0]
-                text =  f'На {a.times.hour}:{a.times.minute} {a.times.day}.{a.times.month}.{a.times.year} проведен осмотр {a.complete} ДИП из {a.maxdvor}. А именно {a.proc}%.'
+                text =  f'На текущий момент проведен осмотр {a.complete} ДИП из {a.maxdvor}. А именно {a.proc}%.'
+                #text =  f'На {a.times.hour}:{a.times.minute} {a.times.day}.{a.times.month}.{a.times.year} проведен осмотр {a.complete} ДИП из {a.maxdvor}. А именно {a.proc}%.'
             else:
                 text = 'На текущую дату ещё нет информации.'
             logging.info('BOT ' + times + " successfully")
