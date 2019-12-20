@@ -10,8 +10,8 @@ class KNDhistor(models.Model): #Отчеты по территориям
     year = models.IntegerField(help_text='Год.', verbose_name = 'Год')
     maxdvor = models.IntegerField(help_text='Всего дворов.',
                             verbose_name = 'Всего дворов')
-    complete = models.IntegerField(help_text='Выполнено дворов.',
-                            verbose_name = 'Выполнено дворов')
+    complete = models.IntegerField(help_text='Выполнено осмотров.',
+                            verbose_name = 'Выполнено осмотров')
     proc = models.IntegerField(help_text='Процент выполнения.',
                             verbose_name = 'Процент выполнения')
     times = models.DateTimeField(auto_now= True, help_text='Время отчета.',
