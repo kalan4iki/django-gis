@@ -6,6 +6,7 @@ import telebot
 import logging
 import traceback
 import urllib
+import pandas as pd
 from telebot import types
 from datetime import timedelta, datetime
 
@@ -116,40 +117,12 @@ def send_anytext(message):
         bot.send_message(message.chat.id, text)
     elif message.text == 'Общий отчёт.':
         temp = [KNDhistor.objects.filter(date=tinow), DIPhistor.objects.filter(date=tinow), MKDhistor.objects.filter(date=tinow)]
-        a = []
-        b = []
-        c = []
-        if len(temp[0]) != 0:
-            a.append(temp[0][0].maxdvor)
-            a.append(temp[0][0].complete)
-            a.append(temp[0][0].proc)
-        else:
-            a.append(0)
-            a.append(0)
-            a.append(0)
-        if len(temp[1]) != 0:
-            b.append(temp[1][0].maxdvor)
-            b.append(temp[1][0].complete)
-            b.append(temp[1][0].proc)
-        else:
-            b.append(0)
-            b.append(0)
-            b.append(0)
-        if len(temp[2]) != 0:
-            c.append(temp[2][0].maxdvor)
-            c.append(temp[2][0].complete)
-            c.append(temp[2][0].proc)
-        else:
-            c.append(0)
-            c.append(0)
-            c.append(0)
-        text = f'''
-Наименование|Всего  | Выполнено |Процентов  |
-Дворы       |{a[0]} |{a[1]}     |{a[2]}%    |
-ДИП         |{b[0]} |{b[1]}     |{b[2]}%    |
-МКД         |{c[0]} |{c[1]}     |{c[2]}%    |
-        '''
-        bot.send_message(message.chat.id, text)
+        temp2 = pd.DataFrame({
+                            'Всего': [temp[0][0].maxdvor, temp[1][0].maxdvor, temp[2][0].maxdvor],
+                            'Выполнено': [temp[0][0].complete, temp[1][0].complete, temp[2][0].complete],
+                            'Процентов': [temp[0][0].proc, temp[1][0].proc, temp[2][0].proc]
+                            }, index = ['Дворы', 'ДИП', 'МКД'])
+        bot.send_message(message.chat.id, temp2)
 
 def keyboard(a):
     markup = types.ReplyKeyboardMarkup(row_width=4, resize_keyboard=True)
