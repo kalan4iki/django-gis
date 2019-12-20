@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from bot.models import KNDhistor, DIPhistor, Usersbot
+from bot.models import KNDhistor, DIPhistor, MKDhistor, Usersbot
 from gis.settings import token, konfmain, DEBUG
 from bot.plot import plot
 import telebot
@@ -54,6 +54,7 @@ def send_anytext(message):
             names = plot('knd')
             photo = open(names, 'rb')
             bot.send_photo(message.chat.id, photo)
+            photo.close()
         except:
             logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
             bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
@@ -73,19 +74,37 @@ def send_anytext(message):
             logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
             bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
     elif message.text == '✉️ МКД.':
-        text = 'Данный раздел в разработке.'
+        try:
+            b = MKDhistor.objects.filter(date=tinow)
+            if len(b) != 0:
+                a = b[0]
+                text =  f'На текущий момент проведен осмотр {a.complete} МКД из {a.maxdvor}. А именно {a.proc}%.'
+                #text =  f'На {a.times.hour}:{a.times.minute} {a.times.day}.{a.times.month}.{a.times.year} проведен осмотр {a.complete} ДИП из {a.maxdvor}. А именно {a.proc}%.'
+            else:
+                text = 'На текущую дату ещё нет информации.'
+        logging.info('BOT ' + times + " successfully")
         bot.send_message(message.chat.id, text)
+        except:
+            logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
+            bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
     elif message.text == '📊 ДИП.':
         try:
             names = plot('dip')
             photo = open(names, 'rb')
             bot.send_photo(message.chat.id, photo)
+            photo.close()
         except:
             logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
             bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
     elif message.text == '📊 МКД.':
-        text = 'Данный раздел в разработке.'
-        bot.send_message(message.chat.id, text)
+        try:
+            names = plot('mkd')
+            photo = open(names, 'rb')
+            bot.send_photo(message.chat.id, photo)
+            photo.close()
+        except:
+            logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
+            bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
     elif message.text == 'Администратирование.':
         text = 'Данный раздел в разработке.'
         bot.send_message(message.chat.id, text)
