@@ -82,8 +82,8 @@ def send_anytext(message):
                 text =  f'На {a.times.hour + 3}:{a.times.minute} {a.times.day}.{a.times.month}.{a.times.year} проведен осмотр {a.complete} ДИП из {a.maxdvor}. А именно {a.proc}%.'
             else:
                 text = 'На текущую дату ещё нет информации.'
-                logging.info('BOT ' + times + " successfully")
-                bot.send_message(message.chat.id, text)
+            logging.info('BOT ' + times + " successfully")
+            bot.send_message(message.chat.id, text)
         except:
             logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
             bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
