@@ -117,10 +117,16 @@ def send_anytext(message):
         bot.send_message(message.chat.id, text)
     elif message.text == 'Общий отчёт.':
         temp = [KNDhistor.objects.filter(date=tinow), DIPhistor.objects.filter(date=tinow), MKDhistor.objects.filter(date=tinow)]
-        temp2 = pd.DataFrame({
-                            'Всего': [temp[0][0].maxdvor, temp[1][0].maxdvor, temp[2][0].maxdvor],
-                            'Выполнено': [temp[0][0].complete, temp[1][0].complete, temp[2][0].complete],
-                            'Процентов': [temp[0][0].proc, temp[1][0].proc, temp[2][0].proc]
+        temp2 = []
+        for i in temp:
+            if len(i) != 0:
+                j = [i[0].maxdvor, i[0].complete, i[0].proc]
+            else:
+                j = [0, 0, 0]
+            temp2.append(j)
+        temp2 = pd.DataFrame({'Всего': [j[0][0], j[1][0], j[2][0]],
+                            'Выполнено': [j[0][1], j[1][1], j[2][1]],
+                            'Процентов': [j[0][2], j[1][2], j[2][2]]
                             }, index = ['Дворы', 'ДИП', 'МКД'])
         bot.send_message(message.chat.id, temp2)
 
@@ -159,11 +165,3 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         bot.polling(none_stop=True)
-
-
-'''
-Наименование|Всего  | Выполнено |Процентов  |
-Дворы       |{a[0]} |{a[1]}     |{a[2]}%    |
-ДИП         |{b[0]} |{b[1]}     |{b[2]}%    |
-МКД         |{c[0]} |{c[1]}     |{c[2]}%    |
-'''

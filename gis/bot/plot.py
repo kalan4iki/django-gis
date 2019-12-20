@@ -107,6 +107,25 @@ def plot(table):
     plt.savefig(names, format='png', dpi=100)
     plt.clf()
     return names
+'''
+def tables():
+    now = datetime.now()
+    if now.day < 10:
+        tinow = "0" + str(now.day) + "." + str(now.month) + "." + str(now.year)
+    else:
+        tinow = str(now.day) + "." + str(now.month) + "." + str(now.year)
+    temp = [KNDhistor.objects.filter(date=tinow), DIPhistor.objects.filter(date=tinow), MKDhistor.objects.filter(date=tinow)]
+    fig=plt.figure()
+    ax = fig.add_subplot(111)
+    ax.xaxis.set_visible(False)
+    ax.yaxis.set_visible(False)
+    clust_data = [['Дворы', temp[0][0].maxdvor, temp[0][0].complete, temp[0][0].proc], ['ДИП', temp[1][0].maxdvor, temp[1][0].complete, temp[1][0].proc], ['МКД', temp[2][0].maxdvor, temp[2][0].complete, temp[2][0].proc]]
+    colLabels=("Наименование", "Всего", "Выполнено", "Процентов")
+    the_table = ax.table(cellText=clust_data, colLabels=colLabels, loc='center')
 
+    names = f'{path_plot}/table+{tinow}.png'
+    plt.savefig(names)
+    return names
+'''
 if __name__ == '__main__':
     plot()

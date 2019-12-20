@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 from bot.models import KNDhistor, DIPhistor, MKDhistor, Usersbot
+import matplotlib.pyplot as plt
 
 dvor = [('10.12.2019', '268', '265', '99'),
 ('11.12.2019', '269', '257', '96'),
@@ -48,7 +49,17 @@ class Command(BaseCommand):
 #        parser.add_argument('poll_id', nargs='+', type=int)
 
     def handle(self, *args, **options):
+        fig=plt.figure()
+        ax = fig.add_subplot(111)
+        ax.xaxis.set_visible(False)
+        ax.yaxis.set_visible(False)
+        clust_data = [[0,0,1,2], [0,3,4,5]]
+        colLabels=("Наименование","Всего", "Выполнено", "Процентов")
+        the_table = ax.table(cellText=clust_data, colLabels=colLabels, loc='center')
+        plt.savefig("table.png")
+        '''
         for i in mkd:
             temp = i[0].split('.')
             a = MKDhistor(date=i[0], day=temp[0], month=temp[1], year=temp[2], maxdvor=i[1], complete=i[2], proc=i[3])
             a.save()
+        '''
