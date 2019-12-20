@@ -120,9 +120,9 @@ def send_anytext(message):
         temp2 = []
         for i in temp:
             if len(i) != 0:
-                j = [i[0].maxdvor, i[0].complete, i[0].proc]
+                j = [str(i[0].maxdvor), str(i[0].complete), str(i[0].proc)]
             else:
-                j = [0, 0, 0]
+                j = ['0', '0', '0']
             temp2.append(j)
         temp2 = pd.DataFrame({'Всего': [j[0][0], j[1][0], j[2][0]],
                             'Выполнено': [j[0][1], j[1][1], j[2][1]],
