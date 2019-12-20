@@ -115,7 +115,40 @@ def send_anytext(message):
         text = f'Запись сохранена.'
         bot.send_message(message.chat.id, text)
     elif message.text == 'Общий отчёт.':
-        text = 'Данный раздел в разработке.'
+        temp = [KNDhistor.objects.filter(date=tinow), DIPhistor.objects.filter(date=tinow), MKDhistor.objects.filter(date=tinow)]
+        a = []
+        b = []
+        c = []
+        if len(temp[0]) != 0:
+            a.append(temp[0][0].maxdvor)
+            a.append(temp[0][0].complete)
+            a.append(temp[0][0].proc)
+        else:
+            a.append(0)
+            a.append(0)
+            a.append(0)
+        if len(temp[1]) != 0:
+            b.append(temp[1][0].maxdvor)
+            b.append(temp[1][0].complete)
+            b.append(temp[1][0].proc)
+        else:
+            b.append(0)
+            b.append(0)
+            b.append(0)
+        if len(temp[2]) != 0:
+            c.append(temp[2][0].maxdvor)
+            c.append(temp[2][0].complete)
+            c.append(temp[2][0].proc)
+        else:
+            c.append(0)
+            c.append(0)
+            c.append(0)
+        text = f'''
+Наименование|Всего  | Выполнено |Процентов  |
+Дворы       |{a[0]} |{a[1]}     |{a[2]}%    |
+ДИП         |{b[0]} |{b[1]}     |{b[2]}%    |
+МКД         |{c[0]} |{c[1]}     |{c[2]}%    |
+        '''
         bot.send_message(message.chat.id, text)
 
 def keyboard(a):
@@ -153,3 +186,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         bot.polling(none_stop=True)
+
+
+'''
+Наименование|Всего  | Выполнено |Процентов  |
+Дворы       |{a[0]} |{a[1]}     |{a[2]}%    |
+ДИП         |{b[0]} |{b[1]}     |{b[2]}%    |
+МКД         |{c[0]} |{c[1]}     |{c[2]}%    |
+'''
