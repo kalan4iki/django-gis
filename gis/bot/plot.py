@@ -71,7 +71,7 @@ def plot(table):
         ax.set_ylabel("Количество ДИП", fontsize=14)
         ax.axhline(maxdip, ls='--', color='r')
         ax.set_ylim(0, maxdip + 80)
-    elif table == 'mkd'
+    elif table == 'mkd':
         ax.set_title("Динамика по осмотру МКД за 7 дней.", fontsize=16)
         ax.set_ylabel("Количество МКД", fontsize=14)
         ax.axhline(maxmkd, ls='--', color='r')
