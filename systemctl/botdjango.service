@@ -1,0 +1,16 @@
+[Unit]
+Description=Telegram bot
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/django-gis/gis
+ExecStart=/usr/bin/python3.7 /home/django-gis/gis/manage.py startbot
+ExecStop=/bin/kill python3.7
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
