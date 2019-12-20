@@ -131,6 +131,7 @@ def send_anytext(message):
                             'Выполнено': [1,1,1], # BUG:
                             'Процентов': [1,1,1] # BUG:
                             }, index = ['Дворы', 'ДИП', 'МКД'])
+        print(temp3)
         bot.send_message(message.chat.id, temp3)
 
 def keyboard(a):
