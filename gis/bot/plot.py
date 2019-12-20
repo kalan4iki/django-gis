@@ -83,7 +83,7 @@ def plot(table):
         ax.yaxis.set_major_locator(MultipleLocator(25))
     elif max > 500 and max <= 2000:
         ax.yaxis.set_major_locator(MultipleLocator(50))
-    else max > 2000:
+    elif max > 2000:
         ax.yaxis.set_major_locator(MultipleLocator(100))
     ax.yaxis.set_minor_locator(MultipleLocator(5))
     ax.tick_params(which='major', length=10, width=2)
