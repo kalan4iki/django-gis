@@ -34,10 +34,6 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'admin_tools',
-    'admin_tools.theming',
-    'admin_tools.menu',
-    'admin_tools.dashboard',
     'django.contrib.auth',
     'django.contrib.sites',
     'django.contrib.admin',
@@ -139,10 +135,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/staticroot/'
 
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-
-]
 
 # Settings bots
 # Настройки бота
