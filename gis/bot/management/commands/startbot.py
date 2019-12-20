@@ -124,11 +124,12 @@ def send_anytext(message):
             else:
                 j = ['0', '0', '0']
             temp2.append(j)
-        temp2 = pd.DataFrame({'Всего': [j[0][0], j[1][0], j[2][0]],
+        print(temp2)
+        temp3 = pd.DataFrame({'Всего': [j[0][0], j[1][0], j[2][0]],
                             'Выполнено': [j[0][1], j[1][1], j[2][1]],
                             'Процентов': [j[0][2], j[1][2], j[2][2]]
                             }, index = ['Дворы', 'ДИП', 'МКД'])
-        bot.send_message(message.chat.id, temp2)
+        bot.send_message(message.chat.id, temp3)
 
 def keyboard(a):
     markup = types.ReplyKeyboardMarkup(row_width=4, resize_keyboard=True)
