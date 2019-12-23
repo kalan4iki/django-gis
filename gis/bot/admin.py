@@ -12,6 +12,7 @@ class KNDhistorAdmin(admin.ModelAdmin):
 @admin.register(DIPhistor)
 class DIPhistorAdmin(admin.ModelAdmin):
     list_display = ('date', 'maxdvor', 'complete', 'proc', 'times',)
+    list_editable = ('complete', 'proc',)
     list_display_links = ('date', 'maxdvor', 'complete', 'proc', 'times',)
     search_fields = ('date',)
     exclude = ('day', 'month', 'year',)
@@ -19,6 +20,7 @@ class DIPhistorAdmin(admin.ModelAdmin):
 @admin.register(MKDhistor)
 class MKDhistorAdmin(admin.ModelAdmin):
     list_display = ('date', 'maxdvor', 'complete', 'proc', 'times',)
+    list_editable = ('complete', 'proc',)
     list_display_links = ('date', 'maxdvor', 'complete', 'proc', 'times',)
     search_fields = ('date',)
     exclude = ('day', 'month', 'year',)
