@@ -51,7 +51,7 @@ class Command(BaseCommand):
     help = 'Команда запуска телеграм бота'
 
     def handle(self, *args, **options):
-        for i in mkd:
+        for i in dip:
             temp = i[0].split('.')
-            a = MKDhistor(date=i[0], day=temp[0], month=temp[1], year=temp[2], maxdvor=i[1], complete=i[2], proc=i[3])
+            a = DIPhistor(date=i[0], day=temp[0], month=temp[1], year=temp[2], maxdvor=i[1], complete=i[2], proc=i[3])
             a.save()
