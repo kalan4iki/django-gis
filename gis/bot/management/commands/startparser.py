@@ -52,7 +52,11 @@ def parser():
         a = i.text.split('%')
         temp.append(a[1].split(' ')[-1].split(')')[0])
         proc.append(a[0])
-
+    tisplit = tinow.split('.')
+    a = KNDhistor(date = tinow, day=tisplit[0], month=tisplit[1], year=tisplit[2],
+                    vrabote= int(temp[0]), dost= int(temp[1]), complete= int(temp[2]), netreb= int(temp[3]),
+                    vraboteproc= float(proc[0]), dostproc= float(proc[1]), completeproc= float(proc[2]), netrebproc= float(proc[3]))
+    a.save()
 
 if __name__ == '__main__':
     parser()
