@@ -36,7 +36,7 @@ def send_anytext(message):
     # Блок запроса информации о пользователи
     ousers = user(message)[1]
     print(user(message))
-    print(int(ousers[0])
+    print(int(ousers[0]))
     # Блок запроса времени и даты
     now = datetime.now()
     times = str(now.hour) + ':' + str(now.minute) + ':' + str(now.second)
