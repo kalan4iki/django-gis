@@ -96,7 +96,7 @@ class Usersbot(models.Model):
     status = models.CharField(max_length=20, help_text='Статус регистрации',
                             verbose_name = 'Статус', default = '0')
     role = models.CharField(max_length=20, help_text='Роль пользователя',
-                            verbose_name = 'Роль', default = '244')
+                            verbose_name = 'Роль', default = '100')
 
     class Meta:
         ordering = ['username']
@@ -114,7 +114,7 @@ class Konfbot(models.Model):
     status = models.CharField(max_length=20, help_text='Статус регистрации',
                             verbose_name = 'Статус', default = '0')
     role = models.CharField(max_length=20, help_text='Роль пользователя',
-                            verbose_name = 'Роль', default = '444')
+                            verbose_name = 'Роль', default = '000')
 
     class Meta:
         ordering = ['id']

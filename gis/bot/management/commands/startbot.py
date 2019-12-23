@@ -20,36 +20,53 @@ bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    if message.chat.type == 'private':
-        a = user(message.from_user)
-        if a[0] == 'reg':
-            bot.send_message(message.chat.id,'''Добро пожаловать. ✌
+    a = user(message)
+    if a[0] == 'reg':
+        bot.send_message(message.chat.id,'''Добро пожаловать. ✌
 Бот для просмотра отчетов KND.
 Вы были зарегистрированы в системе.
 Вам доступен только отчет по территориям.
 Чтобы получить больше доступа обратитесь к @vad_kalinin''', reply_markup=keyboard('0'))
-        elif a[0] == 'exist':
-            bot.send_message(message.chat.id,'''Вы уже зарегистрированы.
+    elif a[0] == 'exist':
+        bot.send_message(message.chat.id,'''Вы уже зарегистрированы.
 По всем вопросам писать @vad_kalinin''', reply_markup=keyboard('0'))
-    else:
-        bot.send_message(message.chat.id,'''Добро пожаловать. ✌
-Бот для просмотра отчетов KND.''', reply_markup=keyboard('0'))
 
 @bot.message_handler(content_types=["text"])
 def send_anytext(message):
+    # Блок запроса информации о пользователи
+    ousers = user(message.from_user)[1]
+
+    # Блок запроса времени и даты
     now = datetime.now()
     times = str(now.hour) + ':' + str(now.minute) + ':' + str(now.second)
     if now.day < 10:
         tinow = "0" + str(now.day) + "." + str(now.month) + "." + str(now.year)
     else:
         tinow = str(now.day) + "." + str(now.month) + "." + str(now.year)
+
+    # Блок разбора сообщений
     if message.text == "Отчеты.":
-        bot.send_message(message.chat.id, 'Выбирете отчеты по тематикам.', reply_markup=keyboard('1'))
+        if int(ousers[0] > 0):
+            bot.send_message(message.chat.id, 'Выбирете отчеты по тематикам.', reply_markup=keyboard('1'))
+        else
+            bot.send_message(message.chat.id, 'Доступ в отчеты не открыт.', reply_markup=keyboard('0'))
     elif message.text == "Динамики.":
-        bot.send_message(message.chat.id, 'Выбирете динамики по тематикам.', reply_markup=keyboard('2'))
+        if int(ousers[1] > 0):
+            bot.send_message(message.chat.id, 'Выбирете динамики по тематикам.', reply_markup=keyboard('2'))
+        else
+            bot.send_message(message.chat.id, 'Доступ в динамики не открыт.', reply_markup=keyboard('0'))
+    elif message.text == 'Администратирование.':
+        if int(ousers[2] > 0):
+            text = 'Данный раздел в разработке.'
+            bot.send_message(message.chat.id, text, reply_markup=keyboard('2'))
+        else
+            bot.send_message(message.chat.id, 'Доступ в раздел не открыт.', reply_markup=keyboard('0'))
     elif message.text == "Назад на главную.":
         bot.send_message(message.chat.id, 'На главную.', reply_markup=keyboard('0'))
     elif message.text == '✉️ Дворы.' or message.text == '/otch':
+        if  int(ousers[0]) < 1:
+            text = 'Нет доступа в данный раздел.'
+            bot.send_message(message.chat.id, text)
         try:
             b = KNDhistor.objects.filter(date=tinow)
             #if config.debug == True: logging.debug(str(b))
@@ -66,15 +83,6 @@ def send_anytext(message):
                 text = 'На текущую дату ещё нет информации.'
             logging.info('BOT ' + times + " successfully")
             bot.send_message(message.chat.id, text)
-        except:
-            logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
-            bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
-    elif message.text == '📊 Дворы.':
-        try:
-            names = plot('knd')
-            photo = open(names, 'rb')
-            bot.send_photo(message.chat.id, photo)
-            photo.close()
         except:
             logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
             bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
@@ -107,6 +115,15 @@ def send_anytext(message):
         except:
             logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
             bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
+    elif message.text == '📊 Дворы.':
+        try:
+            names = plot('knd')
+            photo = open(names, 'rb')
+            bot.send_photo(message.chat.id, photo)
+            photo.close()
+        except:
+            logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
+            bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
     elif message.text == '📊 ДИП.':
         try:
             names = plot('dip')
@@ -125,9 +142,6 @@ def send_anytext(message):
         except:
             logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
             bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
-    elif message.text == 'Администратирование.':
-        text = 'Данный раздел в разработке.'
-        bot.send_message(message.chat.id, text)
     elif message.text.split(' ')[0] == '/adddip':
         a = message.text.split(' ')
         data = {'date': a[1], 'alldv': a[2], 'complete': a[3], 'proc': a[4]}
