@@ -42,7 +42,13 @@ def send_anytext(message):
             if len(b) != 0:
                 a = b[0]
                 #text = f'На текущий момент проведен осмотр {a.complete} дворов из {a.maxdvor}. А именно {a.proc}%.'
-                text = f'На {a.times.hour + 3}:{a.times.minute} {a.times.day}.{a.times.month}.{a.times.year} проведен осмотр {a.complete} дворов из {a.maxdvor}. А именно {a.proc}%.'
+                text = f'''Отчет по осмотру территорий на {a.times.day}.{a.times.month}.{a.times.year} {a.times.hour + 3}:{a.times.minute}:
+Всего задач: {b.allz}
+Взято в работу: {b.vrabote} ({b.vraboteproc}%)
+Доступно: {b.dost} ({b.dostproc}%)
+Завершено: {b.complete} ({b.completeproc}%)
+Работ не требуется: {b.netreb} ({b.netrebproc}%)
+                        '''
             else:
                 text = 'На текущую дату ещё нет информации.'
             logging.info('BOT ' + times + " successfully")
