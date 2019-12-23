@@ -48,18 +48,18 @@ def send_anytext(message):
     if message.text == "Отчеты.":
         if int(ousers[0] > 0):
             bot.send_message(message.chat.id, 'Выбирете отчеты по тематикам.', reply_markup=keyboard('1'))
-        else
+        else:
             bot.send_message(message.chat.id, 'Доступ в отчеты не открыт.', reply_markup=keyboard('0'))
     elif message.text == "Динамики.":
         if int(ousers[1] > 0):
             bot.send_message(message.chat.id, 'Выбирете динамики по тематикам.', reply_markup=keyboard('2'))
-        else
+        else:
             bot.send_message(message.chat.id, 'Доступ в динамики не открыт.', reply_markup=keyboard('0'))
     elif message.text == 'Администратирование.':
         if int(ousers[2] > 0):
             text = 'Данный раздел в разработке.'
             bot.send_message(message.chat.id, text, reply_markup=keyboard('2'))
-        else
+        else:
             bot.send_message(message.chat.id, 'Доступ в раздел не открыт.', reply_markup=keyboard('0'))
     elif message.text == "Назад на главную.":
         bot.send_message(message.chat.id, 'На главную.', reply_markup=keyboard('0'))
