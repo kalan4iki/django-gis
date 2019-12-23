@@ -34,6 +34,7 @@ def send_welcome(message):
 @bot.message_handler(content_types=["text"])
 def send_anytext(message):
     # Блок запроса информации о пользователи
+    print(message)
     ousers = user(message.from_user)[1]
 
     # Блок запроса времени и даты
