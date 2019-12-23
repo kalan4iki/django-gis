@@ -110,7 +110,7 @@ class Konfbot(models.Model):
     id = models.IntegerField(help_text='ID конференции.', verbose_name = 'ID',
                             primary_key = True)
     name = models.CharField(max_length=20, help_text='Название конференции',
-                            verbose_name = 'Название конференции'
+                            verbose_name = 'Название конференции')
     status = models.CharField(max_length=20, help_text='Статус регистрации',
                             verbose_name = 'Статус', default = '0')
     role = models.CharField(max_length=20, help_text='Роль пользователя',
