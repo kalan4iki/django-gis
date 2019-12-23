@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 from bot.models import KNDhistor, DIPhistor, MKDhistor, Usersbot
-from gis.settings import token, konfmain, DEBUG
+from gis.settings import token, konfmain, DEBUG, logs_bot, directory_pr
 from bot.plot import plot
 import telebot
 import logging
@@ -10,7 +10,7 @@ import pandas as pd
 from telebot import types
 from datetime import timedelta, datetime
 
-logging.basicConfig(filename="logs.log", level=logging.INFO)
+logging.basicConfig(filename=directory_pr+logs_bot, level=logging.INFO)
 bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start'])

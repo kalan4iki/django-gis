@@ -8,7 +8,7 @@ from xml.dom.minidom import parseString
 from bs4 import BeautifulSoup
 from sys import platform
 from bot.models import KNDhistor, DIPhistor, MKDhistor, Usersbot
-from gis.settings import DEBUG, username_knd, password_knd, path_driver
+from gis.settings import DEBUG, username_knd, password_knd, path_driver, logs_parser, directory_pr
 import lxml
 import time
 import datetime
@@ -17,7 +17,7 @@ import argparse
 import traceback
 
 parser = argparse.ArgumentParser(description='Print an argument several times')
-logging.basicConfig(filename="logs.log", level=logging.INFO)
+logging.basicConfig(filename=directory_pr+logs_parser, level=logging.INFO)
 
 def parser():
     now = datetime.datetime.now()
