@@ -78,7 +78,7 @@ class Command(BaseCommand):
             times = str(now.hour) + ':' + str(now.minute) + ':' + str(now.second)
             if now.hour < 21 or now.hour > 6:
                 try:
-                    parser(args.value)
+                    parser()
                 except:
                     logging.error('Parser ' + times + " Error data: " + traceback.format_exc())
                 time.sleep(900)

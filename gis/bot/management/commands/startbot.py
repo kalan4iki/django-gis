@@ -12,9 +12,9 @@ import urllib
 import pandas as pd
 
 if platform == 'linux' or platform == 'linux2':
-    logging.basicConfig(filename=logi['linux']['direct']+logi['linux']['parser'], level=logging.INFO)
+    logging.basicConfig(filename=logi['linux']['direct']+logi['linux']['bot'], level=logging.INFO)
 elif platform == 'win32':
-    logging.basicConfig(filename=logi['win']['direct']+logi['win']['parser'], level=logging.INFO)
+    logging.basicConfig(filename=logi['win']['direct']+logi['win']['bot'], level=logging.INFO)
 bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start'])
