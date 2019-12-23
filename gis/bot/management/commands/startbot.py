@@ -35,7 +35,7 @@ def send_welcome(message):
 def send_anytext(message):
     # Блок запроса информации о пользователи
     print(message)
-    ousers = user(message.from_user)[1]
+    ousers = user(message)[1]
 
     # Блок запроса времени и даты
     now = datetime.now()
