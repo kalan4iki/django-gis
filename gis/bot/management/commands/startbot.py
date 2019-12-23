@@ -5,7 +5,7 @@ from bot.plot import plot
 from sys import platform
 from telebot import types
 from datetime import timedelta, datetime
-from bot.userbot import user, chkonf
+from bot.userbot import user
 import telebot
 import logging
 import traceback
