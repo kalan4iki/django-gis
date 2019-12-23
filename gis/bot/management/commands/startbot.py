@@ -126,12 +126,13 @@ def send_anytext(message):
                 j = {'maxdvor': 0, 'complete': 0, 'proc': 0}
             temp2.append(j)
         print(temp2)
-        '''
+
         temp3 = pd.DataFrame({'Всего': [0,0,0], # BUG:
                             'Выполнено': [1,1,1], # BUG:
                             'Процентов': [1,1,1] # BUG:
                             }, index = ['Дворы', 'ДИП', 'МКД'])
-        print(temp3)
+                            '''
+        temp3 = 'В разработке'
         bot.send_message(message.chat.id, temp3)
 
 def keyboard(a):

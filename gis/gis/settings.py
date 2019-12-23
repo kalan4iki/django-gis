@@ -35,7 +35,6 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'django.contrib.auth',
-    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -145,3 +144,10 @@ konfmain = '-246956834' #Рабочая конференция
 
 max_plot = {'knd': 268, 'dip': 330, 'mkd': 1027} # Максимальное количество объектов
 path_plot = '/home/plt' #Размещение графиков
+
+# Конфиг парсера
+
+username_knd = 'tura241@yandex.ru'
+password_knd = 'kn4325'
+path_driver = {'linux': '/home/chromedriver',
+                    'win': 'C:\chromedriver.exe'}

@@ -3,8 +3,8 @@ from .models import KNDhistor, DIPhistor, MKDhistor, Usersbot
 # Register your models here.
 
 class KNDhistorAdmin(admin.ModelAdmin):
-    list_display = ('date', 'maxdvor', 'complete', 'proc', 'times',)
-    list_display_links = ('date', 'maxdvor', 'complete', 'proc', 'times',)
+    list_display = ('date', 'vrabote', 'dost', 'complete', 'netreb', 'times',)
+    list_display_links = ('date', 'vrabote', 'dost', 'complete', 'netreb', 'times',)
     search_fields = ('date',)
 
 class DIPhistorAdmin(admin.ModelAdmin):

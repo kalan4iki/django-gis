@@ -8,12 +8,22 @@ class KNDhistor(models.Model): #Отчеты по территориям
     day = models.IntegerField(help_text='День.', verbose_name = 'День')
     month = models.IntegerField(help_text='Месяц.', verbose_name = 'Месяц')
     year = models.IntegerField(help_text='Год.', verbose_name = 'Год')
-    maxdvor = models.IntegerField(help_text='Всего дворов.',
-                            verbose_name = 'Всего дворов')
-    complete = models.IntegerField(help_text='Выполнено осмотров.',
-                            verbose_name = 'Выполнено осмотров')
-    proc = models.IntegerField(help_text='Процент выполнения.',
-                            verbose_name = 'Процент выполнения')
+    vrabote = models.IntegerField(help_text='В работе.',
+                            verbose_name = 'В работе')
+    dost = models.IntegerField(help_text='Доступно.',
+                            verbose_name = 'Доступно')
+    complete = models.IntegerField(help_text='Выполнено.',
+                            verbose_name = 'Выполнено')
+    netreb = models.IntegerField(help_text='Не ребуются.',
+                            verbose_name = 'Не ребуются')
+    vraboteproc = models.IntegerField(help_text='В работе процентов.',
+                            verbose_name = 'В работе процентов')
+    dostproc = models.IntegerField(help_text='Доступно процентов.',
+                            verbose_name = 'Доступно процентов')
+    completeproc = models.IntegerField(help_text='Выполнено процентов.',
+                            verbose_name = 'Выполнено процентов')
+    netrebproc = models.IntegerField(help_text='Не ребуются процентов.',
+                            verbose_name = 'Не ребуются процентов')
     times = models.DateTimeField(auto_now= True, help_text='Время отчета.',
                             verbose_name = 'Время проверки')
 
