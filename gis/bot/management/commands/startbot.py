@@ -21,7 +21,7 @@ bot = telebot.TeleBot(token)
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     if message.chat.type == 'private':
-        a = checkuser(message.from_user)
+        a = user(message.from_user)
         if a[0] == 'reg':
             bot.send_message(message.chat.id,'''Добро пожаловать. ✌
 Бот для просмотра отчетов KND.
