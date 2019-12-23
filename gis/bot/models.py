@@ -5,9 +5,9 @@ import uuid
 class KNDhistor(models.Model): #Отчеты по территориям
     date = models.CharField(max_length=20, help_text='Дата отчета.',
                             verbose_name = 'Дата', primary_key = True)
-    day = models.IntegerField(help_text='День.', verbose_name = 'День')
-    month = models.IntegerField(help_text='Месяц.', verbose_name = 'Месяц')
-    year = models.IntegerField(help_text='Год.', verbose_name = 'Год')
+    day = models.IntegerField(help_text='День.', verbose_name = 'День', blank=True)
+    month = models.IntegerField(help_text='Месяц.', verbose_name = 'Месяц', blank=True)
+    year = models.IntegerField(help_text='Год.', verbose_name = 'Год', blank=True)
     vrabote = models.IntegerField(help_text='В работе.',
                             verbose_name = 'В работе')
     dost = models.IntegerField(help_text='Доступно.',
@@ -38,9 +38,9 @@ class KNDhistor(models.Model): #Отчеты по территориям
 class DIPhistor(models.Model): #Отчеты по ДИП
     date = models.CharField(max_length=20, help_text='Дата отчета.',
                             verbose_name = 'Дата', primary_key = True)
-    day = models.IntegerField(help_text='День.', verbose_name = 'День')
-    month = models.IntegerField(help_text='Месяц.', verbose_name = 'Месяц')
-    year = models.IntegerField(help_text='Год.', verbose_name = 'Год')
+    day = models.IntegerField(help_text='День.', verbose_name = 'День', blank=True)
+    month = models.IntegerField(help_text='Месяц.', verbose_name = 'Месяц', blank=True)
+    year = models.IntegerField(help_text='Год.', verbose_name = 'Год', blank=True)
     maxdvor = models.IntegerField(help_text='Всего ДИП.',
                             verbose_name = 'Всего ДИП')
     complete = models.IntegerField(help_text='Выполнено осмотров.',
@@ -61,9 +61,9 @@ class DIPhistor(models.Model): #Отчеты по ДИП
 class MKDhistor(models.Model): #Отчеты по ДИП
     date = models.CharField(max_length=20, help_text='Дата отчета.',
                             verbose_name = 'Дата', primary_key = True)
-    day = models.IntegerField(help_text='День.', verbose_name = 'День')
-    month = models.IntegerField(help_text='Месяц.', verbose_name = 'Месяц')
-    year = models.IntegerField(help_text='Год.', verbose_name = 'Год')
+    day = models.IntegerField(help_text='День.', verbose_name = 'День', blank=True)
+    month = models.IntegerField(help_text='Месяц.', verbose_name = 'Месяц', blank=True)
+    year = models.IntegerField(help_text='Год.', verbose_name = 'Год', blank=True)
     maxdvor = models.IntegerField(help_text='Всего МКД.',
                             verbose_name = 'Всего МКД')
     complete = models.IntegerField(help_text='Выполнено осмотров.',

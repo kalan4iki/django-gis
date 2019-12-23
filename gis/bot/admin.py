@@ -6,16 +6,19 @@ class KNDhistorAdmin(admin.ModelAdmin):
     list_display = ('date', 'vrabote', 'dost', 'complete', 'netreb', 'times',)
     list_display_links = ('date', 'vrabote', 'dost', 'complete', 'netreb', 'times',)
     search_fields = ('date',)
+    exclude = ('day', 'month', 'year',)
 
 class DIPhistorAdmin(admin.ModelAdmin):
     list_display = ('date', 'maxdvor', 'complete', 'proc', 'times',)
     list_display_links = ('date', 'maxdvor', 'complete', 'proc', 'times',)
     search_fields = ('date',)
+    exclude = ('day', 'month', 'year',)
 
 class MKDhistorAdmin(admin.ModelAdmin):
     list_display = ('date', 'maxdvor', 'complete', 'proc', 'times',)
     list_display_links = ('date', 'maxdvor', 'complete', 'proc', 'times',)
     search_fields = ('date',)
+    exclude = ('day', 'month', 'year',)
 
 class UsersbotAdmin(admin.ModelAdmin):
     list_display = ('id', 'username', 'email', 'last_name', 'first_name', 'status', 'uuid', 'role',)
