@@ -68,6 +68,7 @@ def send_anytext(message):
         if int(ousers[0]) < 1:
             text = 'Нет доступа в данный раздел.'
             bot.send_message(message.chat.id, text)
+            return False
         try:
             b = KNDhistor.objects.filter(date=tinow)
             #if config.debug == True: logging.debug(str(b))
