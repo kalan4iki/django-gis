@@ -8,7 +8,7 @@ from xml.dom.minidom import parseString
 from bs4 import BeautifulSoup
 from sys import platform
 from bot.models import KNDhistor, DIPhistor, MKDhistor, Usersbot
-from gis.settings import DEBUG, username_knd, password_knd, path_driver, logs_parser, directory_pr
+from gis.settings import DEBUG, username_knd, password_knd, path_driver, logi
 import lxml
 import time
 import datetime
@@ -17,7 +17,11 @@ import argparse
 import traceback
 
 parser = argparse.ArgumentParser(description='Print an argument several times')
-logging.basicConfig(filename=directory_pr+logs_parser, level=logging.INFO)
+if platform == 'linux' or platform == 'linux2':
+    logging.basicConfig(filename=logi['linux']['direct']+logi['linux']['parser'], level=logging.INFO)
+elif platform == 'win32':
+    logging.basicConfig(filename=logi['win']['direct']+logi['win']['parser'], level=logging.INFO)
+
 
 def parser():
     now = datetime.datetime.now()
@@ -65,10 +69,17 @@ if __name__ == '__main__':
     parser()
 
 class Command(BaseCommand):
-    help = 'Команда запуска телеграм бота'
-
-#    def add_arguments(self, parser):
-#        parser.add_argument('poll_id', nargs='+', type=int)
+    help = 'Команда запуска парсера KND'
 
     def handle(self, *args, **options):
-        parser()
+        now = datetime.datetime.now()
+        a = True
+        while a:
+            now = datetime.datetime.now()
+            times = str(now.hour) + ':' + str(now.minute) + ':' + str(now.second)
+            if now.hour < 21 or now.hour > 6:
+                try:
+                    parser(args.value)
+                except:
+                    logging.error('Parser ' + times + " Error data: " + traceback.format_exc())
+                time.sleep(900)

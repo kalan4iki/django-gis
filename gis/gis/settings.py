@@ -135,12 +135,11 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/staticroot/'
 
 
-directory_pr = '/home/django-gis/'
+
 # Settings bots
 # Настройки бота
 token = '1064669767:AAE8lKfpq5OSOkRkxKXunws1diddZH-frAE' #Токен бота
 konfmain = '-246956834' #Рабочая конференция
-logs_bot = 'logs/bot.logs'
 
 # Настройки для графиков
 
@@ -149,8 +148,11 @@ path_plot = '/home/plt' #Размещение графиков
 
 # Конфиг парсера
 
-logs_parser = 'logs/parser.logs'
 username_knd = 'tura241@yandex.ru'
 password_knd = 'kn4325'
 path_driver = {'linux': '/home/chromedriver',
                     'win': 'C:\chromedriver.exe'}
+
+# Настройки логов
+logi = {'linux': {'direct': '/home/django-gis/', 'parser': 'logs/parser.logs', 'bot': 'logs/bot.logs'},
+        'win': {'direct': '', 'parser': 'logs/parser.logs', 'bot': 'logs/bot.logs'}}

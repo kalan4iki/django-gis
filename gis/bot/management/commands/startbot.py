@@ -1,16 +1,20 @@
 from django.core.management.base import BaseCommand, CommandError
 from bot.models import KNDhistor, DIPhistor, MKDhistor, Usersbot
-from gis.settings import token, konfmain, DEBUG, logs_bot, directory_pr
+from gis.settings import token, konfmain, DEBUG, logi
 from bot.plot import plot
+from sys import platform
+from telebot import types
+from datetime import timedelta, datetime
 import telebot
 import logging
 import traceback
 import urllib
 import pandas as pd
-from telebot import types
-from datetime import timedelta, datetime
 
-logging.basicConfig(filename=directory_pr+logs_bot, level=logging.INFO)
+if platform == 'linux' or platform == 'linux2':
+    logging.basicConfig(filename=logi['linux']['direct']+logi['linux']['parser'], level=logging.INFO)
+elif platform == 'win32':
+    logging.basicConfig(filename=logi['win']['direct']+logi['win']['parser'], level=logging.INFO)
 bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start'])

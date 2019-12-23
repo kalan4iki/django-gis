@@ -1,16 +1,16 @@
 [Unit]
-Description=Parser
+Description=Parser django
 After=syslog.target
 After=network.target
 
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/home/kndbot
-ExecStart=/usr/bin/python3.7 /home/kndbot/main.py reg
+WorkingDirectory=/home/django-gis/gis
+ExecStart=/usr/bin/python3.7 /home/django-gis/gis/manage.py startparser
 ExecStop=/bin/kill python3.7
 RestartSec=10
 Restart=always
- 
+
 [Install]
 WantedBy=multi-user.target
