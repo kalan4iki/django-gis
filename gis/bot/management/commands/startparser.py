@@ -16,7 +16,6 @@ import logging
 import argparse
 import traceback
 
-parser = argparse.ArgumentParser(description='Print an argument several times')
 if platform == 'linux' or platform == 'linux2':
     logging.basicConfig(filename=logi['linux']['direct']+logi['linux']['parser'], level=logging.INFO)
 elif platform == 'win32':
