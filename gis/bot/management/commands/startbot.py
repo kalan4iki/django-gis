@@ -5,7 +5,7 @@ from bot.plot import plot
 from sys import platform
 from telebot import types
 from datetime import timedelta, datetime
-from bot.userbot import checkuser
+from bot.userbot import checkuser, chkonf
 import telebot
 import logging
 import traceback
@@ -20,8 +20,19 @@ bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    print(message.from_user)
-    bot.send_message(message.chat.id,'''Добро пожаловать. ✌
+    if message.chat.type == 'private':
+        a = checkuser(message.from_user)
+        if a[0] == 'reg':
+            bot.send_message(message.chat.id,'''Добро пожаловать. ✌
+Бот для просмотра отчетов KND.
+Вы были зарегистрированы в системе.
+Вам доступен только отчет по территориям.
+Чтобы получить больше доступа обратитесь к @vad_kalinin''', reply_markup=keyboard('0'))
+        elif a[0] == 'exist':
+            bot.send_message(message.chat.id,'''Вы уже зарегистрированы.
+По всем вопросам писать @vad_kalinin''', reply_markup=keyboard('0'))
+    else:
+        bot.send_message(message.chat.id,'''Добро пожаловать. ✌
 Бот для просмотра отчетов KND.''', reply_markup=keyboard('0'))
 
 @bot.message_handler(content_types=["text"])

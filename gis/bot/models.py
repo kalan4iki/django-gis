@@ -87,19 +87,37 @@ class Usersbot(models.Model):
     id = models.IntegerField(help_text='ID пользователя.', verbose_name = 'ID',
                             primary_key = True)
     email = models.EmailField(max_length=40, help_text='Почта',
-                            verbose_name = 'Почта пользователя')
+                            verbose_name = 'Почта пользователя', blank = True)
     last_name = models.CharField(max_length=20, help_text='Фамилия',
                             verbose_name = 'Фамилия', blank = True)
     first_name = models.CharField(max_length=20, help_text='Имя',
                             verbose_name = 'Имя', blank = True)
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     status = models.CharField(max_length=20, help_text='Статус регистрации',
-                            verbose_name = 'Статус')
+                            verbose_name = 'Статус', default = '0')
     role = models.CharField(max_length=20, help_text='Роль пользователя',
-                            verbose_name = 'Роль', default = '2')
+                            verbose_name = 'Роль', default = '244')
 
     class Meta:
         ordering = ['username']
+        verbose_name = 'пользователь бота'
+        verbose_name_plural = 'пользователи бота'
+
+    def __str__(self):
+        return self.username
+
+class Konfbot(models.Model):
+    id = models.IntegerField(help_text='ID конференции.', verbose_name = 'ID',
+                            primary_key = True)
+    name = models.CharField(max_length=20, help_text='Название конференции',
+                            verbose_name = 'Название конференции'
+    status = models.CharField(max_length=20, help_text='Статус регистрации',
+                            verbose_name = 'Статус', default = '0')
+    role = models.CharField(max_length=20, help_text='Роль пользователя',
+                            verbose_name = 'Роль', default = '444')
+
+    class Meta:
+        ordering = ['id']
         verbose_name = 'пользователь бота'
         verbose_name_plural = 'пользователи бота'
 
