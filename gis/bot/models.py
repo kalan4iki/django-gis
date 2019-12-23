@@ -89,9 +89,9 @@ class Usersbot(models.Model):
     email = models.EmailField(max_length=40, help_text='Почта',
                             verbose_name = 'Почта пользователя', blank = True)
     last_name = models.CharField(max_length=20, help_text='Фамилия',
-                            verbose_name = 'Фамилия', blank = True)
+                            verbose_name = 'Фамилия', blank = True, null = True)
     first_name = models.CharField(max_length=20, help_text='Имя',
-                            verbose_name = 'Имя', blank = True)
+                            verbose_name = 'Имя', blank = True, null = True)
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     status = models.CharField(max_length=20, help_text='Статус регистрации',
                             verbose_name = 'Статус', default = '0')
@@ -118,8 +118,8 @@ class Konfbot(models.Model):
 
     class Meta:
         ordering = ['id']
-        verbose_name = 'пользователь бота'
-        verbose_name_plural = 'пользователи бота'
+        verbose_name = 'конференция бота'
+        verbose_name_plural = 'конференции бота'
 
     def __str__(self):
-        return self.username
+        return self.name
