@@ -47,17 +47,17 @@ def send_anytext(message):
 
     # Блок разбора сообщений
     if message.text == "Отчеты.":
-        if int(ousers[0] > 0):
+        if int(ousers[0]) > 0:
             bot.send_message(message.chat.id, 'Выбирете отчеты по тематикам.', reply_markup=keyboard('1'))
         else:
             bot.send_message(message.chat.id, 'Доступ в отчеты не открыт.', reply_markup=keyboard('0'))
     elif message.text == "Динамики.":
-        if int(ousers[1] > 0):
+        if int(ousers[1]) > 0:
             bot.send_message(message.chat.id, 'Выбирете динамики по тематикам.', reply_markup=keyboard('2'))
         else:
             bot.send_message(message.chat.id, 'Доступ в динамики не открыт.', reply_markup=keyboard('0'))
     elif message.text == 'Администратирование.':
-        if int(ousers[2] > 0):
+        if int(ousers[2]) > 0:
             text = 'Данный раздел в разработке.'
             bot.send_message(message.chat.id, text, reply_markup=keyboard('2'))
         else:
@@ -65,7 +65,7 @@ def send_anytext(message):
     elif message.text == "Назад на главную.":
         bot.send_message(message.chat.id, 'На главную.', reply_markup=keyboard('0'))
     elif message.text == '✉️ Дворы.' or message.text == '/otch':
-        if  int(ousers[0]) < 1:
+        if int(ousers[0]) < 1:
             text = 'Нет доступа в данный раздел.'
             bot.send_message(message.chat.id, text)
         try:
@@ -88,6 +88,9 @@ def send_anytext(message):
             logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
             bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
     elif message.text == '✉️ ДИП.':
+        if int(ousers[1]) < 1:
+            text = 'Нет доступа в данный раздел.'
+            bot.send_message(message.chat.id, text)
         try:
             b = DIPhistor.objects.filter(date=tinow)
             #if config.debug == True: logging.debug(str(b))
