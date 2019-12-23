@@ -24,7 +24,12 @@ dip = [('06.12.2019', '330', '168', '51'),
 ('14.12.2019', '330', '276', '84'),
 ('15.12.2019', '330', '284', '86'),
 ('16.12.2019', '330', '278', '84'),
-('17.12.2019', '330', '288', '87')]
+('17.12.2019', '330', '288', '87'),
+('18.12.2019', '330', '296', '90'),
+('19.12.2019', '330', '312', '95'),
+('20.12.2019', '330', '327', '99'),
+('21.12.2019', '330', '326', '99'),
+('22.12.2019', '330', '329', '100')]
 
 mkd = [('05.12.2019', '1027', '71', '7'),
 ('06.12.2019', '1027', '117', '11'),
@@ -45,21 +50,8 @@ mkd = [('05.12.2019', '1027', '71', '7'),
 class Command(BaseCommand):
     help = 'Команда запуска телеграм бота'
 
-#    def add_arguments(self, parser):
-#        parser.add_argument('poll_id', nargs='+', type=int)
-
     def handle(self, *args, **options):
-        fig=plt.figure()
-        ax = fig.add_subplot(111)
-        ax.xaxis.set_visible(False)
-        ax.yaxis.set_visible(False)
-        clust_data = [[0,0,1,2], [0,3,4,5]]
-        colLabels=("Наименование","Всего", "Выполнено", "Процентов")
-        the_table = ax.table(cellText=clust_data, colLabels=colLabels, loc='center')
-        plt.savefig("table.png")
-        '''
         for i in mkd:
             temp = i[0].split('.')
             a = MKDhistor(date=i[0], day=temp[0], month=temp[1], year=temp[2], maxdvor=i[1], complete=i[2], proc=i[3])
             a.save()
-        '''
