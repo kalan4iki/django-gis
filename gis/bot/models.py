@@ -1,6 +1,5 @@
 from django.db import models
 import uuid
-# Create your models here.
 
 class KNDhistor(models.Model): #Отчеты по территориям
     date = models.CharField(max_length=20, help_text='Дата отчета.',
@@ -97,7 +96,7 @@ class Usersbot(models.Model):
     status = models.CharField(max_length=20, help_text='Статус регистрации',
                             verbose_name = 'Статус')
     role = models.CharField(max_length=20, help_text='Роль пользователя',
-                            verbose_name = 'Роль')
+                            verbose_name = 'Роль', default = '2')
 
     class Meta:
         ordering = ['username']
@@ -106,5 +105,3 @@ class Usersbot(models.Model):
 
     def __str__(self):
         return self.username
-
-# Добавить МКД

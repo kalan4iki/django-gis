@@ -5,6 +5,7 @@ from bot.plot import plot
 from sys import platform
 from telebot import types
 from datetime import timedelta, datetime
+from bot.Usersbot import checkuser
 import telebot
 import logging
 import traceback
@@ -19,6 +20,7 @@ bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
+    print(message.from_user)
 	bot.send_message(
 		message.chat.id,
 		'''Добро пожаловать. ✌
@@ -125,22 +127,6 @@ def send_anytext(message):
         text = f'Запись сохранена.'
         bot.send_message(message.chat.id, text)
     elif message.text == 'Общий отчёт.':
-        '''
-        temp = [KNDhistor.objects.filter(date=tinow), DIPhistor.objects.filter(date=tinow), MKDhistor.objects.filter(date=tinow)]
-        temp2 = []
-        for i in temp:
-            if len(i) != 0:
-                j = i
-            else:
-                j = {'maxdvor': 0, 'complete': 0, 'proc': 0}
-            temp2.append(j)
-        print(temp2)
-
-        temp3 = pd.DataFrame({'Всего': [0,0,0], # BUG:
-                            'Выполнено': [1,1,1], # BUG:
-                            'Процентов': [1,1,1] # BUG:
-                            }, index = ['Дворы', 'ДИП', 'МКД'])
-                            '''
         temp3 = 'В разработке'
         bot.send_message(message.chat.id, temp3)
 
@@ -168,6 +154,9 @@ def keyboard(a):
         btn4 = types.KeyboardButton('Назад на главную.')
         markup.row(btn1, btn2, btn3)
         markup.row(btn4)
+    elif a == '3':
+        btn9 = types.KeyboardButton('Назад на главную.')
+        markup.row(btn9)
     return markup
 
 
