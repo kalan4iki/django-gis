@@ -21,8 +21,7 @@ bot = telebot.TeleBot(token)
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     print(message.from_user)
-	bot.send_message(
-		message.chat.id,
+	bot.send_message(message.chat.id,
 		'''Добро пожаловать. ✌
 Бот для просмотра отчетов KND.
 		''', reply_markup=keyboard('0'))
