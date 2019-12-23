@@ -65,10 +65,6 @@ def send_anytext(message):
     elif message.text == "Назад на главную.":
         bot.send_message(message.chat.id, 'На главную.', reply_markup=keyboard('0'))
     elif message.text == '✉️ Дворы.' or message.text == '/otch':
-        if int(ousers[0]) == 1 or int(ousers[0]) >= 8:
-            text = 'Нет доступа в данный раздел.'
-            bot.send_message(message.chat.id, text)
-            return False
         try:
             b = KNDhistor.objects.filter(date=tinow)
             #if config.debug == True: logging.debug(str(b))
@@ -89,10 +85,6 @@ def send_anytext(message):
             logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
             bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
     elif message.text == '✉️ ДИП.':
-        if int(ousers[0]) == 2 or int(ousers[0]) >= 8:
-            text = 'Нет доступа в данный раздел.'
-            bot.send_message(message.chat.id, text)
-            return False
         try:
             b = DIPhistor.objects.filter(date=tinow)
             #if config.debug == True: logging.debug(str(b))
@@ -108,10 +100,6 @@ def send_anytext(message):
             logging.error('BOT ' + times + " Error data: " + traceback.format_exc())
             bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
     elif message.text == '✉️ МКД.':
-        if int(ousers[0]) == 3 or int(ousers[0]) >= 8:
-            text = 'Нет доступа в данный раздел.'
-            bot.send_message(message.chat.id, text)
-            return False
         try:
             b = MKDhistor.objects.filter(date=tinow)
             if len(b) != 0:
