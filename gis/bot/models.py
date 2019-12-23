@@ -16,13 +16,13 @@ class KNDhistor(models.Model): #Отчеты по территориям
                             verbose_name = 'Выполнено')
     netreb = models.IntegerField(help_text='Не ребуются.',
                             verbose_name = 'Не ребуются')
-    vraboteproc = models.IntegerField(help_text='В работе процентов.',
+    vraboteproc = models.FloatField(help_text='В работе процентов.',
                             verbose_name = 'В работе процентов')
-    dostproc = models.IntegerField(help_text='Доступно процентов.',
+    dostproc = models.FloatField(help_text='Доступно процентов.',
                             verbose_name = 'Доступно процентов')
-    completeproc = models.IntegerField(help_text='Выполнено процентов.',
+    completeproc = models.FloatField(help_text='Выполнено процентов.',
                             verbose_name = 'Выполнено процентов')
-    netrebproc = models.IntegerField(help_text='Не ребуются процентов.',
+    netrebproc = models.FloatField(help_text='Не ребуются процентов.',
                             verbose_name = 'Не ребуются процентов')
     times = models.DateTimeField(auto_now= True, help_text='Время отчета.',
                             verbose_name = 'Время проверки')
