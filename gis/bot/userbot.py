@@ -9,7 +9,7 @@ def user(users):
         temp.save()
         b = ['reg', temp.role]
     else:
-        b = ['exist', a.role]
+        b = ['exist', a[0].role]
     return b
 
 def chkonf(konf):
@@ -17,7 +17,7 @@ def chkonf(konf):
     if len(a) == 0:
         temp = Usersbot(id = konf.id, name = konf.title)
         temp.save()
-        b = ['reg', b.role]
+        b = ['reg', temp.role]
     else:
-        b = ['exist', b.role]
+        b = ['exist', a[0].role]
     return b
