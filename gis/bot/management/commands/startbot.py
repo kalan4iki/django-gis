@@ -47,8 +47,7 @@ def send_anytext(message):
 Взято в работу: {b.vrabote} ({b.vraboteproc}%)
 Доступно: {b.dost} ({b.dostproc}%)
 Завершено: {b.complete} ({b.completeproc}%)
-Работ не требуется: {b.netreb} ({b.netrebproc}%)
-'''
+Работ не требуется: {b.netreb} ({b.netrebproc}%)'''
             else:
                 text = 'На текущую дату ещё нет информации.'
             logging.info('BOT ' + times + " successfully")
