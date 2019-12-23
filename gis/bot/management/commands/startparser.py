@@ -30,10 +30,10 @@ def parser():
     else:
         tinow = str(now.day) + "." + str(now.month) + "." + str(now.year)
     opts = Options()
-    #opts.add_argument('headless')
-    #opts.add_argument('--no-sandbox')
-    #opts.add_argument('--disable-dev-shm-usage')
     if platform == 'linux' or platform == 'linux2':
+        opts.add_argument('headless')
+        opts.add_argument('--no-sandbox')
+        opts.add_argument('--disable-dev-shm-usage')
         driver = webdriver.Chrome(path_driver['linux'],options=opts)
     elif platform == 'win32':
         driver = webdriver.Chrome(path_driver['win'], options=opts)
