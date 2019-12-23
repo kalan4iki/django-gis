@@ -17,7 +17,7 @@ def user(mess):
         konf = mess.chat
         a = Konfbot.objects.filter(id = konf.id)
         if len(a) == 0:
-            temp = Usersbot(id = konf.id, name = konf.title)
+            temp = Konfbot(id = konf.id, name = konf.title)
             temp.save()
             b = ['reg', temp.role]
         else:
