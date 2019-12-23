@@ -48,14 +48,17 @@ def parser():
     driver.quit()
     temp = []
     proc = []
+    sum = 0
     for i in div:
         a = i.text.split('%')
-        temp.append(a[1].split(' ')[-1].split(')')[0])
-        proc.append(a[0])
+        b = int(a[1].split(' ')[-1].split(')')[0])
+        temp.append(b)
+        proc.append(float(a[0]))
+        sum += b
     tisplit = tinow.split('.')
-    a = KNDhistor(date = tinow, day=tisplit[0], month=tisplit[1], year=tisplit[2],
-                    vrabote= int(temp[0]), dost= int(temp[1]), complete= int(temp[2]), netreb= int(temp[3]),
-                    vraboteproc= float(proc[0]), dostproc= float(proc[1]), completeproc= float(proc[2]), netrebproc= float(proc[3]))
+    a = KNDhistor(date = tinow, day=tisplit[0], month=tisplit[1], year=tisplit[2], allz= sum,
+                    vrabote= temp[0], dost= temp[1], complete= temp[2], netreb= temp[3],
+                    vraboteproc= proc[0], dostproc= proc[1], completeproc= proc[2], netrebproc= proc[3])
     a.save()
 
 if __name__ == '__main__':

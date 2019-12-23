@@ -4,8 +4,8 @@ from .models import KNDhistor, DIPhistor, MKDhistor, Usersbot
 
 @admin.register(KNDhistor)
 class KNDhistorAdmin(admin.ModelAdmin):
-    list_display = ('date', 'vrabote', 'dost', 'complete', 'netreb', 'times',)
-    list_display_links = ('date', 'vrabote', 'dost', 'complete', 'netreb', 'times',)
+    list_display = ('date', 'allz', 'vrabote', 'dost', 'complete', 'netreb', 'times',)
+    list_display_links = ('date', 'allz', 'vrabote', 'dost', 'complete', 'netreb', 'times',)
     search_fields = ('date',)
     exclude = ('day', 'month', 'year',)
 
