@@ -1,5 +1,5 @@
 from gis.settings import DEBUG
 
 def checkuser(id):
-    
-    return
+    a = ''
+    return a
