@@ -57,14 +57,14 @@ class UsersbotAdmin(admin.ModelAdmin):
             rec.status = '1'
             rec.save()
         self.message_user(request, 'Действие выполнено')
-    sootv.short_description = 'Активировать учетные записи'
+    activ.short_description = 'Активировать учетные записи'
 
     def deactiv(self, request, queryset):
         for rec in queryset:
             rec.status = '0'
             rec.save()
         self.message_user(request, 'Действие выполнено')
-    sootv.short_description = 'Деактивировать учетные записи'
+    deactiv.short_description = 'Деактивировать учетные записи'
 
 @admin.register(Konfbot)
 class UsersbotAdmin(admin.ModelAdmin):
