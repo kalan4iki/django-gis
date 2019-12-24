@@ -50,6 +50,21 @@ class UsersbotAdmin(admin.ModelAdmin):
     list_display = ('id', 'username', 'email', 'last_name', 'first_name', 'status', 'uuid', 'role',)
     list_display_links = ('id', 'username', 'email', 'last_name', 'first_name', 'status', 'uuid', 'role',)
     search_fields = ('id', 'username', 'email', 'last_name', 'first_name', 'status', 'uuid', 'role',)
+    actions = ('activ', 'deactiv',)
+
+    def activ(self, request, queryset):
+        for rec in queryset:
+            rec.status = '1'
+            rec.save()
+        self.message_user(request, 'Действие выполнено')
+    sootv.short_description = 'Активировать учетные записи'
+
+    def deactiv(self, request, queryset):
+        for rec in queryset:
+            rec.status = '0'
+            rec.save()
+        self.message_user(request, 'Действие выполнено')
+    sootv.short_description = 'Деактивировать учетные записи'
 
 @admin.register(Konfbot)
 class UsersbotAdmin(admin.ModelAdmin):
