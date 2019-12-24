@@ -71,10 +71,3 @@ class UsersbotAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'status', 'role',)
     list_display_links = ('id', 'name', 'status', 'role',)
     search_fields = ('id', 'name', 'status', 'role',)
-
-'''
-admin.site.register(Usersbot, UsersbotAdmin)
-admin.site.register(KNDhistor, KNDhistorAdmin)
-admin.site.register(DIPhistor, DIPhistorAdmin)
-admin.site.register(MKDhistor, MKDhistorAdmin)
-'''
