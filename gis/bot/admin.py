@@ -15,6 +15,16 @@ class DIPhistorAdmin(admin.ModelAdmin):
     list_display_links = ('date', 'maxdvor', 'complete', 'proc', 'times',)
     search_fields = ('date',)
     exclude = ('day', 'month', 'year',)
+    actions = ('sootv',)
+
+    def sootv(self, request, queryset):
+        for rec in queryset:
+            temp = rec.date.split('.')
+            rec.day = temp[0]
+            rec.month = temp[1]
+            rec.year = temp[2]
+            rec.save()
+        self.message_user(request, 'Действие выполнено')
 
 @admin.register(MKDhistor)
 class MKDhistorAdmin(admin.ModelAdmin):
