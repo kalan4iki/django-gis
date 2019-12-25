@@ -4,10 +4,23 @@ from .models import KNDhistor, DIPhistor, MKDhistor, Usersbot, Konfbot
 
 @admin.register(KNDhistor)
 class KNDhistorAdmin(admin.ModelAdmin):
-    list_display = ('date', 'allz', 'vrabote', 'dost', 'complete', 'netreb', 'times',)
-    list_display_links = ('date', 'allz', 'vrabote', 'dost', 'complete', 'netreb', 'times',)
+    list_display = ('date', 'allz', 'vrproc', 'doproc', 'coproc', 'neproc', 'times',)
+    list_display_links = ('date', 'allz', 'times',)
     search_fields = ('date',)
     exclude = ('day', 'month', 'year',)
+
+    def vrproc(self, rec):
+        return f'{rec.vrabote}  ({rec.vraboteproc}%)'
+    vrproc.short_description = 'В работе'
+    def doproc(self, rec):
+        return f'{rec.dost}  ({rec.dostproc}%)'
+    doproc.short_description = 'Доступно'
+    def coproc(self, rec):
+        return f'{rec.complete}  ({rec.completeproc}%)'
+    coproc.short_description = 'Выполнено'
+    def neproc(self, rec):
+        return f'{rec.netreb}  ({rec.netrebproc}%)'
+    neproc.short_description = 'Не ребуются'
 
 @admin.register(DIPhistor)
 class DIPhistorAdmin(admin.ModelAdmin):
@@ -26,6 +39,7 @@ class DIPhistorAdmin(admin.ModelAdmin):
             rec.save()
         self.message_user(request, 'Действие выполнено')
     sootv.short_description = 'Привести запись в соответсвие'
+
 
 @admin.register(MKDhistor)
 class MKDhistorAdmin(admin.ModelAdmin):
