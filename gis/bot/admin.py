@@ -8,7 +8,8 @@ class KNDhistorAdmin(admin.ModelAdmin):
     list_display_links = ('date', 'allz', 'times',)
     search_fields = ('date',)
     exclude = ('day', 'month', 'year',)
-
+    actions = ('sootv',)
+    
     def vrproc(self, rec):
         return f'{rec.vrabote}  ({rec.vraboteproc}%)'
     vrproc.short_description = 'В работе'
@@ -21,6 +22,16 @@ class KNDhistorAdmin(admin.ModelAdmin):
     def neproc(self, rec):
         return f'{rec.netreb}  ({rec.netrebproc}%)'
     neproc.short_description = 'Не ребуются'
+
+    def sootv(self, request, queryset):
+        for rec in queryset:
+            temp = rec.date.split('.')
+            rec.day = temp[0]
+            rec.month = temp[1]
+            rec.year = temp[2]
+            rec.save()
+        self.message_user(request, 'Действие выполнено')
+    sootv.short_description = 'Привести запись в соответсвие'
 
 @admin.register(DIPhistor)
 class DIPhistorAdmin(admin.ModelAdmin):
