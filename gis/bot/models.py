@@ -61,9 +61,9 @@ class DIPhistor(models.Model): #Отчеты по ДИП
 class MKDhistor(models.Model): #Отчеты по ДИП
     date = models.CharField(max_length=20, help_text='Дата отчета.',
                             verbose_name = 'Дата', primary_key = True)
-    day = models.IntegerField(help_text='День.', verbose_name = 'День', blank=True)
-    month = models.IntegerField(help_text='Месяц.', verbose_name = 'Месяц', blank=True)
-    year = models.IntegerField(help_text='Год.', verbose_name = 'Год', blank=True)
+    day = models.IntegerField(help_text='День.', verbose_name = 'День', blank=True, null = True)
+    month = models.IntegerField(help_text='Месяц.', verbose_name = 'Месяц', blank=True, null = True)
+    year = models.IntegerField(help_text='Год.', verbose_name = 'Год', blank=True, null = True)
     maxdvor = models.IntegerField(help_text='Всего МКД.',
                             verbose_name = 'Всего МКД')
     complete = models.IntegerField(help_text='Выполнено осмотров.',
