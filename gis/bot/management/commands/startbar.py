@@ -3,8 +3,8 @@ from sys import platform
 from telebot import types
 from datetime import timedelta, datetime
 from bot.userbot import user
-from barcode.writer import ImageWriter
 import barcode
+from barcode.writer import ImageWriter
 import telebot
 import logging
 import traceback
@@ -17,7 +17,7 @@ bot = telebot.TeleBot(token)
 def send_anytext(message):
     a = message.text
     codes = barcode.get_barcode_class('code39')
-    ean = codes(a, writer=ImageWriter())
+    ean = codes(str(a), writer=ImageWriter())
     now = datetime.now()
     times = str(now.hour) + ':' + str(now.minute) + ':' + str(now.second)
     fullname = ean.save(f'barcode/{times}_barcode')
