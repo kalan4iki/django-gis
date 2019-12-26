@@ -22,7 +22,7 @@ def send_anytext(message):
     times = str(now.hour) + ':' + str(now.minute) + ':' + str(now.second)
     fullname = ean.save(f'barcode/{times}_barcode')
     photo = open(fullname, 'rb')
-    bot.send_document(message.chat.id, photo)
+    bot.send_photo(message.chat.id, photo)
     photo.close()
 
 class Command(BaseCommand):
