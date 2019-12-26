@@ -15,15 +15,18 @@ bot = telebot.TeleBot(token)
 
 @bot.message_handler(content_types=["text"])
 def send_anytext(message):
-    a = message.text
-    codes = barcode.get_barcode_class('code128')
-    ean = codes(str(a), writer=ImageWriter())
-    now = datetime.now()
-    times = str(now.hour) + ':' + str(now.minute) + ':' + str(now.second)
-    fullname = ean.save(f'barcode/{times}_barcode')
-    photo = open(fullname, 'rb')
-    bot.send_photo(message.chat.id, photo)
-    photo.close()
+    try:
+        a = message.text
+        codes = barcode.get_barcode_class('code128')
+        ean = codes(str(a), writer=ImageWriter())
+        now = datetime.now()
+        times = str(now.hour) + ':' + str(now.minute) + ':' + str(now.second)
+        fullname = ean.save(f'barcode/{times}_barcode')
+        photo = open(fullname, 'rb')
+        bot.send_photo(message.chat.id, photo)
+        photo.close()
+    except:
+        bot.send_message(message.from_user.id, 'Была допущена ошибка при подготовке сообщения.')
 
 class Command(BaseCommand):
     help = 'Команда запуска телеграм бота'
