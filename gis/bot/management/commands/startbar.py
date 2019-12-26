@@ -4,12 +4,13 @@ from telebot import types
 from datetime import timedelta, datetime
 from bot.userbot import user
 from barcode.writer import ImageWriter
+import barcode
 import telebot
 import logging
 import traceback
 import urllib
 
-token = ''
+token = '1047483483:AAF6V0fMTNYRDjx0XZfHHGy3GdWiWmuporE'
 bot = telebot.TeleBot(token)
 
 @bot.message_handler(content_types=["text"])
