@@ -16,7 +16,7 @@ bot = telebot.TeleBot(token)
 @bot.message_handler(content_types=["text"])
 def send_anytext(message):
     a = message.text
-    codes = barcode.get_barcode_class('code39')
+    codes = barcode.get_barcode_class('code128')
     ean = codes(str(a), writer=ImageWriter())
     now = datetime.now()
     times = str(now.hour) + ':' + str(now.minute) + ':' + str(now.second)
