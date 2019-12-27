@@ -11,7 +11,7 @@ class KNDhistorAdmin(admin.ModelAdmin):
     actions = ('sootv',)
 
     def procall(self, rec):
-        return f'{()(int(rec.complete) + int(rec.netreb)) * 100) / int(rec.allz)}'
+        return f'{((int(rec.complete) + int(rec.netreb)) * 100) / int(rec.allz)}'
     procall.short_description = 'Процент выполненого'
     def vrproc(self, rec):
         return f'{rec.vrabote}  ({rec.vraboteproc}%)'
