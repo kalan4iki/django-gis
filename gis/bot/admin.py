@@ -4,12 +4,15 @@ from .models import KNDhistor, DIPhistor, MKDhistor, Usersbot, Konfbot
 
 @admin.register(KNDhistor)
 class KNDhistorAdmin(admin.ModelAdmin):
-    list_display = ('date', 'allz', 'vrproc', 'doproc', 'coproc', 'neproc', 'times',)
+    list_display = ('date', 'allz', 'procall', 'vrproc', 'doproc', 'coproc', 'neproc', 'times',)
     list_display_links = ('date', 'allz', 'times',)
     search_fields = ('date',)
     exclude = ('day', 'month', 'year',)
     actions = ('sootv',)
-    
+
+    def procall(self, rec):
+        return f'{float(rec.completeproc) + float(rec.netrebproc)}'
+    vrproc.short_description = 'Процент выполненого'
     def vrproc(self, rec):
         return f'{rec.vrabote}  ({rec.vraboteproc}%)'
     vrproc.short_description = 'В работе'
