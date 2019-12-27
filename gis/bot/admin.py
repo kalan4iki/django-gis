@@ -12,7 +12,7 @@ class KNDhistorAdmin(admin.ModelAdmin):
 
     def procall(self, rec):
         return f'{float(rec.completeproc) + float(rec.netrebproc)}'
-    vrproc.short_description = 'Процент выполненого'
+    procall.short_description = 'Процент выполненого'
     def vrproc(self, rec):
         return f'{rec.vrabote}  ({rec.vraboteproc}%)'
     vrproc.short_description = 'В работе'
