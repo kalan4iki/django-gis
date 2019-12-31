@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'huffed.ru',
     '188.120.232.93',
+    '127.0.0.1',
 ]
 
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bot.apps.BotConfig',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'gis.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:/GitHub/django-gis/gis/sites/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,7 +136,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/staticroot/'
 
-
+STATICFILES_DIRS = [
+    'C:/GitHub/django-gis/gis/sites/static',
+]
 
 # Settings bots
 # Настройки бота

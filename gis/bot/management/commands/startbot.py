@@ -20,17 +20,18 @@ bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    a = user(message)
-    if a[0] == 'reg':
-        bot.send_message(message.chat.id,'''Добро пожаловать. ✌
+    bot.send_message(message.chat.id,'''Добро пожаловать. ✌
 Бот для просмотра отчетов KND.
 Вы были зарегистрированы в системе.
 Вам доступен только отчет по территориям.
 Чтобы получить больше доступа обратитесь к @vad_kalinin''', reply_markup=keyboard('0'))
+'''
+    a = user(message)
+    if a[0] == 'reg':
     elif a[0] == 'exist':
         bot.send_message(message.chat.id,'''Вы уже зарегистрированы.
 По всем вопросам писать @vad_kalinin''', reply_markup=keyboard('0'))
-
+'''
 @bot.message_handler(content_types=["text"])
 def send_anytext(message):
     # Блок запроса информации о пользователи
