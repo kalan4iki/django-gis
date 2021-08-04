@@ -1,0 +1,38 @@
+version: '3'
+
+# хранилища
+volumes:
+    pgdata:
+        driver: local
+services:
+    python:
+        container_name: django
+        restart: always
+# указываем откуда собирать образ
+        build:
+            context: .
+            dockerfile: docker/python/Dockerfile
+# монтируем директорию проекта
+        volumes:
+            - ./mcur:/srv/www/mcur
+        expose:
+          - 8000
+        ports:
+            - 8000:8000
+# запускаем gunicorn
+        command: "gunicorn -c gunicorn.py mcur.wsgi"
+    db:
+        container_name: mysql
+        image: mysql:5.7
+        restart: always
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        ports:
+          - "3306:3306"
+        environment:
+          MYSQL_ROOT_PASSWORD: 211563
+          MYSQL_DATABASE: gis
+          MYSQL_USER: djangogis
+          MYSQL_PASSWORD: 211563
+        volumes:
+          - ./mysql:/var/lib/mysql
+          - ./sql:/docker-entrypoint-initdb.d
